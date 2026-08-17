@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import defaultLogoAsset from '../../assets/images/LogoJC.png';
+import defaultLogoAsset from '../../assets/images/regenerated_image_1787009419254.png';
 
 interface ClinicLogoProps {
   variant?: 'header' | 'sidebar' | 'login' | 'certificate' | 'large';
