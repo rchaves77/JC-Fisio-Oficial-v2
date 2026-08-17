@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import defaultLogoAsset from '../../assets/images/LogoJC.png';
 
 interface ClinicLogoProps {
   variant?: 'header' | 'sidebar' | 'login' | 'certificate' | 'large';
@@ -7,7 +8,7 @@ interface ClinicLogoProps {
   onLogoClick?: () => void;
 }
 
-const DEFAULT_LOGO_SRC = '/LogoJC.png';
+const DEFAULT_LOGO_SRC = defaultLogoAsset || '/LogoJC.png';
 
 export const ClinicLogo: React.FC<ClinicLogoProps> = ({
   variant = 'header',

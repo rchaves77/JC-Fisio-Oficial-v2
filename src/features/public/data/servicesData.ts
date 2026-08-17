@@ -1,3 +1,6 @@
+import imgQuadrilLipedema from '../../../assets/images/regenerated_image_1786994499639.png';
+import imgFraturaPosCirurgica from '../../../assets/images/regenerated_image_1786994691835.png';
+
 export interface ServiceItem {
   id: number;
   slug: string;
@@ -339,7 +342,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Recuperação da força muscular sem sobrecarga no foco da fratura',
       'Volta segura ao trabalho e à rotina independente',
     ],
-    imageUrl: '/fratura.png',
+    imageUrl: imgFraturaPosCirurgica,
     badge: 'Reabilitação Segura',
     isPopular: false,
   },
@@ -370,7 +373,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Melhora da leveza e disposição nas pernas para caminhar',
       'Prevenção de novos estiramentos musculares em atletas e praticantes de exercícios',
     ],
-    imageUrl: '/quadril.png',
+    imageUrl: imgQuadrilLipedema,
     badge: 'Inovação & Cuidado',
     isPopular: false,
   },
