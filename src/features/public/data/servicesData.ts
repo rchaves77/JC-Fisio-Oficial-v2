@@ -1,5 +1,6 @@
 import imgQuadrilLipedema from '../../../assets/images/regenerated_image_1786994499639.png';
 import imgFraturaPosCirurgica from '../../../assets/images/regenerated_image_1786994691835.png';
+import imgEpicondiliteCotovelo from '../../../assets/images/regenerated_image_1786994940019.png';
 
 export interface ServiceItem {
   id: number;
@@ -209,7 +210,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Restauração da firmeza no aperto de mão e tarefas diárias',
       'Prevenção de recidivas e cronificação',
     ],
-    imageUrl: '/cotovelo.png',
+    imageUrl: imgEpicondiliteCotovelo,
     badge: 'Regeneração Tendínea',
     isPopular: false,
   },

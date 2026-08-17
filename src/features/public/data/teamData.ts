@@ -1,3 +1,5 @@
+import imgDrJucelino from '../../../assets/images/regenerated_image_1786994782132.png';
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -24,7 +26,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     bio: 'Pioneiro e maior referência em tratamento conservador de coluna no Acre. Ao longo de mais de 15 anos de dedicação exclusiva, já reabilitou mais de 43.000 pacientes sem necessidade de cirurgias, desenvolvendo um método próprio que combina diagnóstico mecânico rigoroso, ajustes manuais precisos e fortalecimento do core.',
     experience: '15+ anos de prática clínica',
-    imageUrl: '/jucelino.png',
+    imageUrl: imgDrJucelino,
     isLead: true,
   },
   {
