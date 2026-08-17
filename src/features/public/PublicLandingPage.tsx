@@ -90,7 +90,7 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
         onSelectServiceSlug={handleSelectServiceBySlug}
       />
 
-      {/* 3. MANIPULATIVE TREATMENTS SECTION ("Tratamento manipulativo cervical/lombar/vertebral") */}
+      {/* 3. MANIPULATIVE TREATMENTS SECTION (Tratamento manipulativo cervical/lombar/vertebral) */}
       <ManipulativeTreatmentsSection
         whatsappUrl={whatsappUrl}
       />

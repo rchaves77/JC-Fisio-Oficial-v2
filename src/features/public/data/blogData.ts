@@ -1,3 +1,7 @@
+import imgBlogGonartrose from '../../../assets/images/regenerated_image_1787004991694.png';
+import imgBlogFascite from '../../../assets/images/regenerated_image_1787005311149.png';
+import imgBlogManguito from '../../../assets/images/regenerated_image_1787005296880.png';
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -49,7 +53,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '02 de Agosto, 2026',
     author: 'Dra. Leticia Vasconcelos',
     authorRole: 'Fisioterapeuta Ortopédica & Traumato-Ortopedia',
-    imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80',
+    imageUrl: imgBlogGonartrose,
     content: [
       'A gonartrose (desgaste da cartilagem do joelho) é uma das principais queixas de dor ao caminhar, subir ou descer escadas e levantar da cadeira. Muitas pessoas acreditam que, por ter artrose, devem parar de caminhar para "economizar" a cartilagem — o que é um erro grave.',
       'A cartilagem não possui vasos sanguíneos próprios; ela se nutre através da compressão e descompressão do líquido sinovial produzida durante o movimento orientado. Quando o paciente para de se mover, o líquido diminui e a rigidez aumenta.',
@@ -72,7 +76,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '20 de Julho, 2026',
     author: 'Dr. Jucelino Castro',
     authorRole: 'Fisioterapeuta Especialista em Coluna & Quiropraxia',
-    imageUrl: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=900&q=80',
+    imageUrl: imgBlogFascite,
     content: [
       'Você já acordou de manhã, colocou o pé no chão e sentiu uma pontada tão intensa no calcanhar que precisou mancar? Esse é o sintoma clássico da fascite plantar, frequentemente acompanhada de esporão de calcâneo.',
       'Durante a noite, enquanto dormimos com os pés relaxados, a fáscia plantar encurta e tenta cicatrizar. No momento em que você pisa no chão ao despertar, o peso do corpo estica abruptamente essa estrutura inflamada, gerando microlesões e dor aguda.',
@@ -95,7 +99,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '08 de Julho, 2026',
     author: 'Dra. Aline Castro',
     authorRole: 'Fisioterapeuta & Pilates Clínico',
-    imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80',
+    imageUrl: imgBlogManguito,
     content: [
       'A dor no ombro que piora durante a noite ao deitar sobre o lado afetado ou ao tentar pentear o cabelo e alcançar as costas é um sinal clássico de pinçamento subacromial ou tendinopatia do manguito rotador.',
       'O manguito rotador é composto por 4 músculos essenciais que mantêm a cabeça do úmero centralizada na cavidade do ombro. Quando há fraqueza muscular ou má postura com ombros caídos para frente, o espaço ósseo se fecha e o tendão é esmagado a cada movimento.',

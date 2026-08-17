@@ -1,6 +1,11 @@
 import imgQuadrilLipedema from '../../../assets/images/regenerated_image_1786994499639.png';
 import imgFraturaPosCirurgica from '../../../assets/images/regenerated_image_1786994691835.png';
 import imgEpicondiliteCotovelo from '../../../assets/images/regenerated_image_1786994940019.png';
+import imgGonartroseJoelho from '../../../assets/images/regenerated_image_1787003722857.png';
+import imgFascitePlantar from '../../../assets/images/regenerated_image_1787003847857.png';
+import imgTunelDoCarpo from '../../../assets/images/regenerated_image_1787004035802.png';
+import imgManguitoRotador from '../../../assets/images/regenerated_image_1787005522727.png';
+import imgArtroseArtrite from '../../../assets/images/regenerated_image_1787004314725.png';
 
 export interface ServiceItem {
   id: number;
@@ -85,7 +90,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Recuperação da marcha firme e sem claudicação',
       'Prevenção de desgaste cartilaginoso precoce',
     ],
-    imageUrl: '/joelho.png',
+    imageUrl: imgGonartroseJoelho,
     badge: 'Alta Procura',
     isPopular: true,
   },
@@ -116,7 +121,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Desinflamação da inserção do calcanhar sem agulhas',
       'Retorno confortável a caminhadas e esportes',
     ],
-    imageUrl: '/fascite.png',
+    imageUrl: imgFascitePlantar,
     badge: 'Alívio Rápido',
     isPopular: true,
   },
@@ -147,7 +152,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Recuperação da força para segurar objetos',
       'Tratamento 100% conservador que evita cortes no punho',
     ],
-    imageUrl: '/tunel-carpo.png',
+    imageUrl: imgTunelDoCarpo,
     badge: 'Descompressão Nervosa',
     isPopular: false,
   },
@@ -179,7 +184,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Elevar os braços para alcançar objetos altos sem pontadas',
       'Preservação e cicatrização dos tendões do ombro',
     ],
-    imageUrl: '/ombro.png',
+    imageUrl: imgManguitoRotador,
     badge: 'Destaque Clínico',
     isPopular: true,
   },
@@ -244,7 +249,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Prevenção de cirurgias de prótese articular',
       'Alívio duradouro da rigidez e inchaço articular',
     ],
-    imageUrl: '/artrose.png',
+    imageUrl: imgArtroseArtrite,
     badge: 'Mobilidade & Vida',
     isPopular: false,
   },

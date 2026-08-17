@@ -59,7 +59,7 @@ export const ManipulativeTreatmentsSection: React.FC<ManipulativeTreatmentsSecti
 
                 {/* Title */}
                 <h3 className="text-xl font-black text-slate-900 tracking-tight leading-snug group-hover:text-[#0f3e8f] transition-colors">
-                  "{item.title}"
+                  {item.title}
                 </h3>
 
                 {/* Description */}

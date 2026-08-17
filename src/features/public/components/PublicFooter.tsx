@@ -173,8 +173,8 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
               <div className="flex items-start gap-2">
                 <Clock className="h-3.5 w-3.5 text-blue-400 shrink-0 mt-0.5" />
                 <div className="space-y-0.5">
-                  <div className="font-semibold">{CLINIC_INFO.hoursWeekday}</div>
-                  <div className="text-slate-400">{CLINIC_INFO.hoursSaturday}</div>
+                  <div className="font-bold text-slate-200">{CLINIC_INFO.hoursWeekday}</div>
+                  <div className="font-bold text-slate-200">{CLINIC_INFO.hoursSaturday}</div>
                 </div>
               </div>
             </div>
@@ -205,17 +205,29 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
 
         {/* Bottom Strip */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>
-            © {new Date().getFullYear()} <strong>{CLINIC_INFO.name}</strong>. Todos os direitos reservados.
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-center sm:text-left">
+            <span>© {new Date().getFullYear()} <strong>{CLINIC_INFO.name}</strong>. Todos os direitos reservados.</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <span>
+              Desenvolvido por{' '}
+              <a
+                href="https://instagram.com/cliente_box"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 font-bold transition-colors underline-offset-2 hover:underline"
+              >
+                @cliente_box
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span>Desenvolvido com excelência médica e foco na saúde.</span>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer"
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer flex items-center gap-1.5 px-3 py-1.5"
               title="Voltar ao topo"
             >
+              <span className="text-[11px] font-medium text-slate-300">Topo</span>
               <ChevronUp className="h-4 w-4" />
             </button>
           </div>
