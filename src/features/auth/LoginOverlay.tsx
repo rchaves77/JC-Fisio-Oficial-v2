@@ -148,14 +148,14 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
         )}
 
         {/* Glow Accent */}
-        <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" />
+        <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-blue-600/20 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />
 
         {/* Brand Header */}
         <div className="text-center space-y-3 relative z-10 flex flex-col items-center justify-center">
           <ClinicLogo variant="login" />
           <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            Seja bem-vindo(a) ao Sistema de Gestão Clínico, Prontuários & Agendamentos
+            Sistema de Gestão Clínico, Prontuários & Agendamentos
           </p>
         </div>
 
@@ -167,9 +167,9 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
               setActiveTab('login');
               setRegisterSuccessMsg(false);
             }}
-            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTab === 'login'
-                ? 'bg-emerald-500 text-slate-950 shadow-md'
+                ? 'bg-[#0f3e8f] text-white shadow-md'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -180,14 +180,14 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('register')}
-            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               activeTab === 'register'
-                ? 'bg-emerald-500 text-slate-950 shadow-md'
+                ? 'bg-[#0f3e8f] text-white shadow-md'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             <UserPlus className="h-4 w-4" />
-            <span>Criar Conta / Solicitar Acesso</span>
+            <span>Solicitar Acesso</span>
           </button>
         </div>
 
@@ -197,8 +197,8 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
             <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
                 <span>Selecione seu Usuário Aprovado</span>
-                <span className="text-[10px] text-emerald-400 flex items-center gap-1">
-                  <ShieldCheck className="h-3 w-3" /> Acesso Protegido
+                <span className="text-[10px] text-blue-400 flex items-center gap-1">
+                  <ShieldCheck className="h-3 w-3 text-red-400" /> Acesso Protegido
                 </span>
               </label>
 
@@ -218,7 +218,7 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
                         isSelected
                           ? isPending
                             ? 'border-amber-500 bg-amber-500/10 text-slate-100 ring-1 ring-amber-500/40'
-                            : 'border-emerald-500 bg-emerald-500/10 text-slate-100 ring-1 ring-emerald-500/40'
+                            : 'border-[#0f3e8f] bg-[#0f3e8f]/20 text-slate-100 ring-1 ring-blue-500/40'
                           : 'border-slate-800 bg-slate-800/50 text-slate-400 hover:border-slate-700 hover:bg-slate-800'
                       }`}
                     >
@@ -238,7 +238,7 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
                               <Clock className="h-3 w-3" /> Pendente
                             </span>
                           ) : (
-                            isSelected && <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                            isSelected && <CheckCircle2 className="h-4 w-4 text-blue-400 shrink-0" />
                           )}
                         </div>
                         <div className="text-[10px] text-slate-400 truncate">
@@ -256,15 +256,15 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
               <div className="space-y-1 bg-slate-800/60 p-3.5 rounded-2xl border border-slate-800">
                 <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1">
                   <span>
-                    Entrando como: <strong className="text-emerald-400">{selectedUser.name}</strong>
+                    Entrando como: <strong className="text-blue-400">{selectedUser.name}</strong>
                   </span>
                 </div>
                 <input
                   type="password"
-                  placeholder="Senha ou Código de Acesso (qualquer tecla)"
+                  placeholder="Senha ou Código de Acesso"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-200 focus:border-emerald-500 focus:outline-none"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-200 focus:border-[#0f3e8f] focus:outline-none"
                 />
               </div>
             )}
@@ -278,7 +278,7 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
 
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-3 text-xs font-bold text-slate-950 hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0f3e8f] py-3 text-xs font-bold text-white hover:bg-[#0c2f6d] transition-colors shadow-lg shadow-blue-900/40 cursor-pointer"
             >
               <span>Entrar no Sistema</span>
               <ArrowRight className="h-4 w-4 stroke-[3]" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Patient, Appointment } from '../../types';
-import { Clock, User, FilePlus, ChevronRight, Calendar, UserPlus } from 'lucide-react';
+import { Clock, User, FilePlus, ChevronRight, Calendar, UserPlus, AlertTriangle } from 'lucide-react';
 
 interface PhysioDashboardProps {
   patients: Patient[];
@@ -68,7 +68,18 @@ export const PhysioDashboard: React.FC<PhysioDashboardProps> = ({
                       {app.timeSlot}
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-200">{app.patientName}</h4>
+                      <h4 className="font-bold text-slate-200 flex items-center gap-1.5">
+                        <span>{app.patientName}</span>
+                        {app.isEncaixe && (
+                          <span
+                            title="Encaixe de Horário"
+                            className="inline-flex items-center gap-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 px-1.5 py-0.2 text-[9px] font-black uppercase tracking-wider"
+                          >
+                            <AlertTriangle className="h-3 w-3 text-amber-400 fill-amber-400/20" />
+                            Encaixe
+                          </span>
+                        )}
+                      </h4>
                       <span className="text-slate-400 text-[11px]">{app.type} • {app.room}</span>
                     </div>
                   </div>

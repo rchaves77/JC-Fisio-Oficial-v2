@@ -367,6 +367,10 @@ export default function App() {
                     setActiveTab('pacientes');
                     setOpenPatientModal(true);
                   }}
+                  onOpenWhatsAppDispatch={() => {
+                    setSelectedWhatsAppPatient(null);
+                    setIsWhatsAppOpen(true);
+                  }}
                   onConfirmAttendance={handleConfirmAttendance}
                   userName={currentUser.name}
                 />
@@ -386,6 +390,10 @@ export default function App() {
                   onCloseExternalModal={() => setOpenAppointmentModal(false)}
                   physios={getPhysios()}
                   onGenerateCertificate={handleGenerateCertificateForAppointment}
+                  onOpenWhatsAppConfirmations={() => {
+                    setSelectedWhatsAppPatient(null);
+                    setIsWhatsAppOpen(true);
+                  }}
                 />
               )}
 
@@ -474,6 +482,7 @@ export default function App() {
         isOpen={isWhatsAppOpen}
         onClose={() => setIsWhatsAppOpen(false)}
         patients={allPatients}
+        appointments={appointments}
         initialPatient={selectedWhatsAppPatient}
       />
 

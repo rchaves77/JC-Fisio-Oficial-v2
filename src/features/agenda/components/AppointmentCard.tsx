@@ -1,7 +1,8 @@
 import React from 'react';
 import { Appointment } from '../../../types';
 import { DropdownMenu, DropdownItem } from '../../../components/common/DropdownMenu';
-import { Clock, MapPin, CheckCircle2, XCircle, AlertCircle, Edit, Eye, MessageCircle, Play, UserX, CheckCheck, Award, Star, Zap } from 'lucide-react';
+import { Clock, MapPin, CheckCircle2, XCircle, AlertCircle, AlertTriangle, Edit, Eye, MessageCircle, Play, UserX, CheckCheck, Award, Star, Zap } from 'lucide-react';
+import { formatAppointmentConfirmationMessage, openWhatsApp } from '../../../utils/whatsappMessages';
 
 interface AppointmentCardProps {
   appointment: Appointment;
@@ -60,61 +61,52 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   const statusInfo = statusConfig[appointment.status] || statusConfig.confirmed;
 
   const handleWhatsAppConfirm = () => {
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const cleanPhone = (appointment.patientPhone || '5561999998888').replace(/\D/g, '');
-    const phone = cleanPhone.length === 11 ? `55${cleanPhone}` : cleanPhone;
-    const text = encodeURIComponent(
-      `Olá, ${appointment.patientName.split(' ')[0]}! 🩺 Seu agendamento na JC Fisioterapia (${appointment.date} às ${appointment.timeSlot}) está CONFIRMADO com ${appointment.physioName}. Te esperamos na ${appointment.room}!`
-    );
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phone}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const text = formatAppointmentConfirmationMessage({
+      patientName: appointment.patientName,
+      date: appointment.date,
+      timeSlot: appointment.timeSlot,
+      physioName: appointment.physioName,
+      room: appointment.room,
+      isEncaixe: appointment.isEncaixe,
+    });
+    openWhatsApp({
+      phone: appointment.patientPhone || '5561999998888',
+      text,
+    });
   };
 
   const handleWhatsAppCancel = () => {
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const cleanPhone = (appointment.patientPhone || '5561999998888').replace(/\D/g, '');
-    const phone = cleanPhone.length === 11 ? `55${cleanPhone}` : cleanPhone;
-    const text = encodeURIComponent(
-      `Olá, ${appointment.patientName.split(' ')[0]}! Informamos que seu agendamento na JC Fisioterapia de ${appointment.date} às ${appointment.timeSlot} foi DESMARCADO. Entre em contato para reagendar!`
-    );
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phone}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const firstName = appointment.patientName ? appointment.patientName.split(' ')[0] : 'Paciente';
+    const text = `Olá, ${firstName}! Informamos que seu agendamento na JC Fisioterapia de ${appointment.date} às ${appointment.timeSlot} foi DESMARCADO. Entre em contato para reagendar quando desejar!`;
+    openWhatsApp({
+      phone: appointment.patientPhone || '5561999998888',
+      text,
+    });
     onCancel(appointment.id);
   };
 
   const handleQuickWhatsApp = () => {
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const cleanPhone = (appointment.patientPhone || '5561999998888').replace(/\D/g, '');
-    const phone = cleanPhone.length === 11 ? `55${cleanPhone}` : cleanPhone;
-    const text = encodeURIComponent(
-      `Olá, ${appointment.patientName.split(' ')[0]}! 🩺 Lembramos do seu agendamento na JC Fisioterapia para ${appointment.date} às ${appointment.timeSlot}. Podemos confirmar?`
-    );
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phone}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const text = formatAppointmentConfirmationMessage({
+      patientName: appointment.patientName,
+      date: appointment.date,
+      timeSlot: appointment.timeSlot,
+      physioName: appointment.physioName,
+      room: appointment.room,
+      isEncaixe: appointment.isEncaixe,
+    });
+    openWhatsApp({
+      phone: appointment.patientPhone || '5561999998888',
+      text,
+    });
   };
 
   const handleWhatsAppGoogleReview = () => {
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const cleanPhone = (appointment.patientPhone || '').replace(/\D/g, '');
-    const phone = cleanPhone.length <= 11 ? `55${cleanPhone}` : cleanPhone;
-    const firstName = appointment.patientName.split(' ')[0];
-    const text = encodeURIComponent(
-      `Olá, ${firstName}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`
-    );
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phone}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const firstName = appointment.patientName ? appointment.patientName.split(' ')[0] : 'Paciente';
+    const text = `Olá, ${firstName}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`;
+    openWhatsApp({
+      phone: appointment.patientPhone || '',
+      text,
+    });
   };
 
   const dropdownItems: DropdownItem[] = [
@@ -208,9 +200,18 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
               {appointment.patientName.slice(0, 2).toUpperCase()}
             </div>
           )}
-          <div className="min-w-0">
-            <h4 className="font-semibold text-slate-100 text-xs leading-snug truncate">
-              {appointment.patientName}
+          <div className="min-w-0 flex-1">
+            <h4 className="font-semibold text-slate-100 text-xs leading-snug flex items-center gap-1.5 flex-wrap">
+              <span className="truncate">{appointment.patientName}</span>
+              {appointment.isEncaixe && (
+                <span
+                  title="Encaixe de Horário (Atendimento Simultâneo)"
+                  className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0 shadow-sm"
+                >
+                  <AlertTriangle className="h-3 w-3 text-amber-400 fill-amber-400/20 shrink-0" />
+                  <span>Encaixe</span>
+                </span>
+              )}
             </h4>
             <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
               <span

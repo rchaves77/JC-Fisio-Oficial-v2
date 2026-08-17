@@ -2,6 +2,7 @@ import React from 'react';
 import { Patient } from '../../../types';
 import { DropdownMenu, DropdownItem } from '../../../components/common/DropdownMenu';
 import { Eye, Edit, Printer, UserX, Phone, FileText, MessageCircle, Star } from 'lucide-react';
+import { openWhatsApp } from '../../../utils/whatsappMessages';
 
 interface PatientTableProps {
   patients: Patient[];
@@ -18,33 +19,22 @@ export const PatientTable: React.FC<PatientTableProps> = ({
 }) => {
   const handleOpenWhatsApp = (patient: Patient, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const digits = patient.phone.replace(/\D/g, '');
-    const phoneWithCountry = digits.length <= 11 ? `55${digits}` : digits;
-    const text = encodeURIComponent(`Olá, ${patient.name.split(' ')[0]}! Tudo bem? Falo da JC Fisioterapia.`);
-    
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phoneWithCountry}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phoneWithCountry}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const firstName = patient.name ? patient.name.split(' ')[0] : 'Paciente';
+    const text = `Olá, ${firstName}! Tudo bem? Falo da JC Fisioterapia.`;
+    openWhatsApp({
+      phone: patient.phone,
+      text,
+    });
   };
 
   const handleSendGoogleReview = (patient: Patient, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    const rawMode = localStorage.getItem('jc_wa_send_mode') || 'windows';
-    const digits = patient.phone.replace(/\D/g, '');
-    const phoneWithCountry = digits.length <= 11 ? `55${digits}` : digits;
     const nameToUse = patient.name ? patient.name.split(' ')[0] : 'Paciente';
-    const text = encodeURIComponent(
-      `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`
-    );
-
-    if (rawMode === 'windows') {
-      window.location.href = `whatsapp://send?phone=${phoneWithCountry}&text=${text}`;
-    } else {
-      window.open(`https://web.whatsapp.com/send?phone=${phoneWithCountry}&text=${text}`, '_blank', 'noopener,noreferrer');
-    }
+    const text = `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`;
+    openWhatsApp({
+      phone: patient.phone,
+      text,
+    });
   };
 
   return (

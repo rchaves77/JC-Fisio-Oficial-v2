@@ -1,6 +1,7 @@
 import React from 'react';
 import { Appointment } from '../../types';
-import { UserPlus, Calendar, PhoneCall, Clock, CheckCircle2, UserCheck } from 'lucide-react';
+import { UserPlus, Calendar, PhoneCall, Clock, CheckCircle2, UserCheck, AlertTriangle, Send } from 'lucide-react';
+import { formatAppointmentConfirmationMessage, openWhatsApp } from '../../utils/whatsappMessages';
 
 interface SecretaryDashboardProps {
   appointments: Appointment[];
@@ -9,6 +10,7 @@ interface SecretaryDashboardProps {
   onOpenNewAppointment: () => void;
   onOpenNewPatient: () => void;
   onConfirmAttendance?: (app: Appointment) => void;
+  onOpenWhatsAppDispatch?: () => void;
   userName?: string;
 }
 
@@ -76,20 +78,44 @@ export const SecretaryDashboard: React.FC<SecretaryDashboardProps> = ({
                     {app.timeSlot}
                   </span>
                   <div>
-                    <h4 className="font-bold text-slate-200 text-sm">{app.patientName}</h4>
+                    <h4 className="font-bold text-slate-200 text-sm flex items-center gap-1.5">
+                      <span>{app.patientName}</span>
+                      {app.isEncaixe && (
+                        <span
+                          title="Encaixe de Horário"
+                          className="inline-flex items-center gap-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 px-1.5 py-0.2 text-[9px] font-black uppercase tracking-wider"
+                        >
+                          <AlertTriangle className="h-3 w-3 text-amber-400 fill-amber-400/20" />
+                          Encaixe
+                        </span>
+                      )}
+                    </h4>
                     <p className="text-slate-400 text-[11px]">{app.physioName} • {app.room} ({app.type})</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 flex-wrap">
-                  <a
-                    href={`https://wa.me/55${app.patientPhone.replace(/\D/g, '')}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const text = formatAppointmentConfirmationMessage({
+                        patientName: app.patientName,
+                        date: app.date,
+                        timeSlot: app.timeSlot,
+                        physioName: app.physioName,
+                        room: app.room,
+                        isEncaixe: app.isEncaixe,
+                      });
+                      openWhatsApp({
+                        phone: app.patientPhone || '5561999998888',
+                        text,
+                      });
+                    }}
+                    className="flex items-center gap-1 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-400 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+                    title="Enviar confirmação formatada via WhatsApp"
                   >
                     <PhoneCall className="h-3.5 w-3.5" /> WhatsApp
-                  </a>
+                  </button>
 
                   {app.status !== 'confirmed' && app.status !== 'completed' ? (
                     <button

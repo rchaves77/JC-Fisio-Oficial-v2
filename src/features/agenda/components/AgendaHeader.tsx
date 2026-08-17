@@ -1,7 +1,8 @@
 import React from 'react';
 import { ViewMode } from '../hooks/useAgendaState';
 import { User } from '../../../types';
-import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Plus, Filter } from 'lucide-react';
+import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Plus, Filter, MessageSquare } from 'lucide-react';
+import { getSuggestedConfirmationTargetDate } from '../../../utils/whatsappMessages';
 
 interface AgendaHeaderProps {
   selectedDate: string;
@@ -13,6 +14,7 @@ interface AgendaHeaderProps {
   statusFilter: string;
   onStatusFilterChange: (status: string) => void;
   onOpenNewModal: () => void;
+  onOpenWhatsAppConfirmations?: () => void;
   physios?: User[];
 }
 
@@ -26,6 +28,7 @@ export const AgendaHeader: React.FC<AgendaHeaderProps> = ({
   statusFilter,
   onStatusFilterChange,
   onOpenNewModal,
+  onOpenWhatsAppConfirmations,
   physios,
 }) => {
   // Format formatted display date
@@ -36,6 +39,8 @@ export const AgendaHeader: React.FC<AgendaHeaderProps> = ({
     month: 'long',
     year: 'numeric',
   });
+
+  const suggestedTarget = getSuggestedConfirmationTargetDate();
 
   const handlePrevDay = () => {
     const d = new Date(selectedDate + 'T00:00:00');
@@ -117,9 +122,25 @@ export const AgendaHeader: React.FC<AgendaHeaderProps> = ({
             </button>
           </div>
 
+          {onOpenWhatsAppConfirmations && (
+            <button
+              onClick={onOpenWhatsAppConfirmations}
+              className="flex items-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-2 text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 hover:text-emerald-300 transition-colors shrink-0 cursor-pointer shadow-xs"
+              title={`Disparar confirmações via WhatsApp para ${suggestedTarget.dayLabel} (${suggestedTarget.formattedTargetDate})`}
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span className="hidden md:inline">
+                {suggestedTarget.isMonday || suggestedTarget.isSaturday
+                  ? 'Confirmar Segunda (07:30)'
+                  : 'Confirmar Amanhã (WA)'}
+              </span>
+              <span className="md:hidden">Confirmar WA</span>
+            </button>
+          )}
+
           <button
             onClick={onOpenNewModal}
-            className="flex items-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2 text-xs font-bold text-slate-950 shadow-md hover:bg-emerald-400 transition-colors shrink-0"
+            className="flex items-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2 text-xs font-bold text-slate-950 shadow-md hover:bg-emerald-400 transition-colors shrink-0 cursor-pointer"
           >
             <Plus className="h-4 w-4 stroke-[3]" />
             <span className="hidden sm:inline">Agendar Consulta</span>

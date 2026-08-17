@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { UserRole, User } from '../../types';
 import { Bell, Search, MessageSquare, Lock, UserCog, CheckCheck, Clock, ShieldCheck, X, Menu, Globe } from 'lucide-react';
 import { ClinicLogo } from '../common/ClinicLogo';

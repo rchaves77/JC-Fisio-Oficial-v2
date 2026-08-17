@@ -19,7 +19,6 @@ export const OnlineBooking: React.FC<OnlineBookingProps> = ({ onBookingSuccess }
 
   const procedures = [
     { title: 'Avaliação Ortopédica', time: '50 min', price: 'R$ 250', desc: 'Avaliação física completa e elaboração de conduta.' },
-    { title: 'Sessão de Fisioterapia', time: '50 min', price: 'R$ 180', desc: 'Reabilitação analgésica e cinesioterapia.' },
     { title: 'Pilates Clínico', time: '50 min', price: 'R$ 160', desc: 'Exercícios focados em postura e core.' },
     { title: 'RPG / Reeducação Postural', time: '60 min', price: 'R$ 200', desc: 'Posturas globais para alinhamento da coluna.' },
   ];

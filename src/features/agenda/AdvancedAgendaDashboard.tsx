@@ -12,6 +12,7 @@ interface AdvancedAgendaDashboardProps {
   onCloseExternalModal?: () => void;
   physios?: any[];
   onGenerateCertificate?: (app: Appointment) => void;
+  onOpenWhatsAppConfirmations?: () => void;
 }
 
 export const AdvancedAgendaDashboard: React.FC<AdvancedAgendaDashboardProps> = ({
@@ -20,6 +21,7 @@ export const AdvancedAgendaDashboard: React.FC<AdvancedAgendaDashboardProps> = (
   onCloseExternalModal,
   physios = [],
   onGenerateCertificate,
+  onOpenWhatsAppConfirmations,
 }) => {
   const {
     patients,
@@ -199,6 +201,7 @@ export const AdvancedAgendaDashboard: React.FC<AdvancedAgendaDashboardProps> = (
         onPhysioChange={setSelectedPhysioId}
         statusFilter={statusFilter}
         onStatusFilterChange={setStatusFilter}
+        onOpenWhatsAppConfirmations={onOpenWhatsAppConfirmations}
         onOpenNewModal={() => {
           setEditingAppointment(null);
           setIsModalOpen(true);

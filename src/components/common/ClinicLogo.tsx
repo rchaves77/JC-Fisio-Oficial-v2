@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ClinicLogoProps {
   variant?: 'header' | 'sidebar' | 'login' | 'certificate' | 'large';
@@ -7,34 +7,56 @@ interface ClinicLogoProps {
   onLogoClick?: () => void;
 }
 
-const LOGO_SRC = '/LogoJC.png';
+const DEFAULT_LOGO_SRC = '/LogoJC.png';
 
 export const ClinicLogo: React.FC<ClinicLogoProps> = ({
   variant = 'header',
   className = '',
   onLogoClick,
 }) => {
-  const imgSizeClasses = {
-    header: 'h-14 sm:h-16 w-auto max-w-[240px]',
-    sidebar: 'h-12 w-auto max-w-[180px]',
-    login: 'h-32 sm:h-44 w-auto max-w-[340px]',
-    certificate: 'h-20 w-auto max-w-[280px]',
-    large: 'h-32 sm:h-44 w-auto max-w-[340px]',
+  const [logoSrc, setLogoSrc] = useState<string>(() => {
+    return localStorage.getItem('jc_clinic_logo') || DEFAULT_LOGO_SRC;
+  });
+
+  useEffect(() => {
+    const handleStorage = () => {
+      const stored = localStorage.getItem('jc_clinic_logo');
+      if (stored) setLogoSrc(stored);
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  const sizeStyles = {
+    header: 'h-14 sm:h-16 max-h-16 w-auto max-w-[260px]',
+    sidebar: 'h-12 max-h-12 w-auto max-w-[190px]',
+    login: 'h-32 sm:h-44 max-h-48 w-auto max-w-[360px]',
+    certificate: 'h-20 max-h-24 w-auto max-w-[280px]',
+    large: 'h-36 sm:h-48 max-h-52 w-auto max-w-[360px]',
   };
 
   return (
     <div
       onClick={onLogoClick}
-      className={`inline-flex items-center select-none ${onLogoClick ? 'cursor-pointer group' : ''} ${className}`}
+      className={`inline-flex items-center justify-center select-none ${
+        onLogoClick ? 'cursor-pointer group' : ''
+      } ${className}`}
       title="Jucelino Castro Fisioterapia & Quiropraxia"
     >
-      <div className={`relative overflow-hidden rounded-xl bg-white border border-slate-200/90 shadow-xs shrink-0 flex items-center justify-center p-1.5 transition-all group-hover:border-slate-300 ${imgSizeClasses[variant]}`}>
+      <div className="relative flex items-center justify-center transition-transform duration-200 group-hover:scale-[1.02]">
         <img
-          src={LOGO_SRC}
+          src={logoSrc}
           alt="Jucelino Castro Fisioterapia"
-          className="h-full w-auto object-contain max-h-full"
+          referrerPolicy="no-referrer"
+          className={`${sizeStyles[variant]} object-contain drop-shadow-xs`}
+          onError={(e) => {
+            if (logoSrc !== DEFAULT_LOGO_SRC) {
+              setLogoSrc(DEFAULT_LOGO_SRC);
+            }
+          }}
         />
       </div>
     </div>
   );
 };
+
