@@ -12,6 +12,19 @@ import {
 } from 'lucide-react';
 import { ServiceItem, CLINIC_INFO } from '../data/servicesData';
 
+const SERVICE_FALLBACK_IMAGES: Record<number, string> = {
+  1: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80',
+  2: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=900&q=80',
+  3: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
+  4: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80',
+  5: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
+  6: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80',
+  7: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+  8: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
+  9: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=900&q=80',
+  10: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=900&q=80',
+};
+
 interface ServiceDetailModalProps {
   service: ServiceItem | null;
   onClose: () => void;
@@ -40,8 +53,9 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             className="w-full h-full object-cover opacity-80"
             onError={(e) => {
               const target = e.currentTarget;
-              if (!target.src.includes('photo-1576091160399')) {
-                target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80';
+              const fallback = SERVICE_FALLBACK_IMAGES[service.id] || 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80';
+              if (target.src !== fallback) {
+                target.src = fallback;
               }
             }}
           />
