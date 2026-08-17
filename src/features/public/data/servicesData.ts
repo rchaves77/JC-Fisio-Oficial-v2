@@ -6,6 +6,8 @@ import imgFascitePlantar from '../../../assets/images/regenerated_image_17870038
 import imgTunelDoCarpo from '../../../assets/images/regenerated_image_1787004035802.png';
 import imgManguitoRotador from '../../../assets/images/regenerated_image_1787005522727.png';
 import imgArtroseArtrite from '../../../assets/images/regenerated_image_1787004314725.png';
+import imgTendinitesGeral from '../../../assets/images/regenerated_image_1787009967948.png';
+import imgColunaProtusao from '../../../assets/images/regenerated_image_1787009965429.png';
 
 export interface ServiceItem {
   id: number;
@@ -280,7 +282,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Alívio da dor na parte interna do joelho ao caminhar',
       'Recuperação rápida da elasticidade do tendão',
     ],
-    imageUrl: '/tendinite.png',
+    imageUrl: imgTendinitesGeral,
     badge: 'Cuidado Completo',
     isPopular: false,
   },
@@ -316,7 +318,7 @@ export const SERVICES_LIST: ServiceItem[] = [
       'Retorno imediato às atividades profissionais e de lazer',
       'Ganho postural e segurança mecânica para a coluna',
     ],
-    imageUrl: '/coluna.png',
+    imageUrl: imgColunaProtusao,
     badge: 'Referência Estadual',
     isPopular: true,
   },
