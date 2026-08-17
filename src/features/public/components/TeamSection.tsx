@@ -50,7 +50,15 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ whatsappUrl }) => {
                 <img
                   src={lead.imageUrl}
                   alt={lead.name}
-                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    // Fallback to high quality medical portrait if local file is pending
+                    const target = e.currentTarget;
+                    if (target.src !== 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80') {
+                      target.src = 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80';
+                    }
+                  }}
                 />
               </div>
               <div className="absolute -bottom-3 -right-3 bg-[#0f3e8f] text-white p-3 rounded-2xl shadow-lg border-2 border-white flex items-center gap-2">
@@ -119,7 +127,17 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ whatsappUrl }) => {
                 <img
                   src={member.imageUrl}
                   alt={member.name}
-                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const fallback = member.id === 'dra-reabilitacao'
+                      ? 'https://images.unsplash.com/photo-1594824813581-2a7e7bc8c242?auto=format&fit=crop&w=800&q=80'
+                      : 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80';
+                    if (target.src !== fallback) {
+                      target.src = fallback;
+                    }
+                  }}
                 />
               </div>
 

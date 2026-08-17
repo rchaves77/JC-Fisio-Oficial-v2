@@ -95,7 +95,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '08 de Julho, 2026',
     author: 'Dr. Marcos Aurélio Rocha',
     authorRole: 'Fisioterapeuta & Instrutor de Pilates',
-    imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1519824145371-dec43b3d71e7?auto=format&fit=crop&w=900&q=80',
     content: [
       'A dor no ombro que piora durante a noite ao deitar sobre o lado afetado ou ao tentar pentear o cabelo e alcançar as costas é um sinal clássico de pinçamento subacromial ou tendinopatia do manguito rotador.',
       'O manguito rotador é composto por 4 músculos essenciais que mantêm a cabeça do úmero centralizada na cavidade do ombro. Quando há fraqueza muscular ou má postura com ombros caídos para frente, o espaço ósseo se fecha e o tendão é esmagado a cada movimento.',

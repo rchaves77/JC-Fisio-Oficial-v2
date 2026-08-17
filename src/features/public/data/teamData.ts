@@ -24,7 +24,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     bio: 'Pioneiro e maior referência em tratamento conservador de coluna no Acre. Ao longo de mais de 15 anos de dedicação exclusiva, já reabilitou mais de 43.000 pacientes sem necessidade de cirurgias, desenvolvendo um método próprio que combina diagnóstico mecânico rigoroso, ajustes manuais precisos e fortalecimento do core.',
     experience: '15+ anos de prática clínica',
-    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/jucelino.png',
     isLead: true,
   },
   {
@@ -40,7 +40,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     bio: 'Especializada no restabelecimento biomecânico de membros inferiores e superiores. Foco em recuperação acelerada pós-fratura, condromalácia, lesões de menisco e alívio de tendinites com protocolos baseados em evidência científica.',
     experience: '8 anos de experiência',
-    imageUrl: 'https://images.unsplash.com/photo-1594824813581-2a7e7bc8c242?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/dra-camila.png',
   },
   {
     id: 'dr-quiropraxia',
@@ -55,7 +55,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     bio: 'Responsável pelo estúdio de Pilates Clínico e fortalecimento postural. Atua na proteção das articulações contra o desgaste e na reabilitação muscular de pacientes com dor crônica, lipedema e lesões desportivas.',
     experience: '7 anos de experiência',
-    imageUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/dr-marcos.png',
   },
 ];
 
