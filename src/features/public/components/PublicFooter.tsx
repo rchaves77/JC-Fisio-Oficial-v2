@@ -31,11 +31,11 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 text-left items-start">
           
           {/* Col 1: Brand & Bio (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="bg-white p-2 rounded-2xl inline-block">
+          <div className="lg:col-span-4 flex flex-col items-start space-y-4">
+            <div className="bg-white p-2 rounded-2xl inline-flex items-center justify-start shadow-sm">
               <ClinicLogo variant="header" />
             </div>
 
@@ -48,7 +48,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
               <span>{CLINIC_INFO.founderCrefito}</span>
             </div>
 
-            <div className="flex items-center gap-2 pt-1">
+            <div className="flex items-center gap-2 pt-0.5">
               <a
                 href={CLINIC_INFO.instagramUrl}
                 target="_blank"
@@ -66,7 +66,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
           </div>
 
           {/* Col 2: Serviços Rápidos (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-black uppercase tracking-wider text-blue-400">
               Tratamentos Principais
             </h4>
@@ -105,7 +105,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
           </div>
 
           {/* Col 3: Navegação (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-black uppercase tracking-wider text-blue-400">
               Navegação
             </h4>
@@ -152,7 +152,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
           </div>
 
           {/* Col 4: Contato & Horários (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-black uppercase tracking-wider text-blue-400">
               Atendimento em Rio Branco
             </h4>
