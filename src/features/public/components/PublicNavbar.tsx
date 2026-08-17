@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Stethoscope,
   Sparkles,
+  Instagram,
 } from 'lucide-react';
 import { ClinicLogo } from '../../../components/common/ClinicLogo';
 import { CLINIC_INFO } from '../data/servicesData';
@@ -28,13 +29,13 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
 
   const navLinks = [
     { label: 'Início', href: '#inicio' },
-    { label: 'Serviços & Especialidades', href: '#servicos' },
-    { label: 'Tratamentos Manipulativos', href: '#manipulativos' },
-    { label: 'Guia de Patologias', href: '#patologias' },
-    { label: 'A Equipe', href: '#equipe' },
-    { label: 'Blog & Dicas', href: '#blog' },
+    { label: 'Serviços', href: '#servicos' },
+    { label: 'Manipulativos', href: '#manipulativos' },
+    { label: 'Patologias', href: '#patologias' },
+    { label: 'Corpo Clínico', href: '#equipe' },
+    { label: 'Blog', href: '#blog' },
     { label: 'Depoimentos', href: '#depoimentos' },
-    { label: 'Convênios & Contato', href: '#contato' },
+    { label: 'Convênios & Localização', href: '#contato' },
   ];
 
   return (
@@ -44,28 +45,41 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
           <div className="flex items-center gap-2">
             <span className="flex h-2.5 w-2.5 rounded-full bg-[#dc2626] animate-pulse ring-2 ring-red-400/40 shrink-0" />
-            <span>
-              Referência em Coluna & Hérnia de Disco em {CLINIC_INFO.cityState} • Atendimento com Hora Marcada a partir das <strong className="text-amber-300 font-bold">07:30</strong>
+            <span className="text-slate-100">
+              Bosque, Rio Branco/AC • Atendimento com Hora Marcada a partir das <strong className="text-amber-300 font-bold">07:30</strong>
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex items-center gap-4 text-xs">
             <a
               href={`tel:${CLINIC_INFO.landlinePhone.replace(/\D/g, '')}`}
-              className="inline-flex items-center gap-1 text-blue-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-blue-200 hover:text-white transition-colors"
+              title="Ligar para telefone fixo"
             >
-              <Phone className="h-3 w-3 text-red-400" />
-              <span>Fixo: {CLINIC_INFO.landlinePhone}</span>
+              <Phone className="h-3.5 w-3.5 text-red-400" />
+              <span>{CLINIC_INFO.landlinePhone}</span>
             </a>
             <span className="text-blue-400 hidden sm:inline">•</span>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-blue-200 hover:text-white font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 text-blue-200 hover:text-white font-bold transition-colors"
+              title="Conversar no WhatsApp"
             >
-              <MessageCircle className="h-3 w-3 text-emerald-400" />
-              <span>WhatsApp: {CLINIC_INFO.whatsappPhone}</span>
+              <MessageCircle className="h-3.5 w-3.5 text-emerald-400" />
+              <span>{CLINIC_INFO.whatsappPhone}</span>
+            </a>
+            <span className="text-blue-400 hidden sm:inline">•</span>
+            <a
+              href={CLINIC_INFO.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-pink-300 hover:text-white font-bold transition-colors"
+              title="Visitar Instagram oficial"
+            >
+              <Instagram className="h-3.5 w-3.5 text-pink-400" />
+              <span>Instagram</span>
             </a>
           </div>
         </div>
@@ -81,7 +95,7 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-6 text-[12px] font-bold text-slate-700 tracking-wide uppercase">
+          <nav className="hidden xl:flex items-center gap-6 text-[13px] font-bold text-slate-800 tracking-wide">
             {navLinks.map((link, idx) => (
               <a
                 key={idx}
@@ -98,7 +112,7 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
             {/* Team Access */}
             <button
               onClick={onOpenLogin}
-              className="flex items-center gap-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 px-3.5 py-2.5 text-xs font-bold text-slate-700 transition-all border border-slate-300 shadow-2xs cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 px-3.5 py-2.5 text-xs font-bold text-slate-800 transition-all border border-slate-300 shadow-2xs cursor-pointer"
               title="Acesso Restrito ao Sistema Clínico da Equipe"
             >
               <Lock className="h-3.5 w-3.5 text-[#0f3e8f]" />
@@ -147,13 +161,19 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
             </div>
 
             <div className="pt-3 border-t border-slate-100 space-y-2">
-              <div className="flex items-center gap-2 text-xs text-slate-600 font-semibold px-2">
+              <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold px-2">
                 <Clock className="h-4 w-4 text-[#0f3e8f]" />
                 <span>{CLINIC_INFO.hoursWeekday}</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-600 font-semibold px-2">
+              <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold px-2">
                 <MapPin className="h-4 w-4 text-[#dc2626]" />
                 <span>{CLINIC_INFO.address}</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-pink-700 font-semibold px-2">
+                <Instagram className="h-4 w-4 text-pink-600" />
+                <a href={CLINIC_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  {CLINIC_INFO.instagramHandle}
+                </a>
               </div>
             </div>
           </div>

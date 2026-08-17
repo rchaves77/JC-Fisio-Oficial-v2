@@ -131,9 +131,9 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ whatsappUrl }) => {
                   className="w-full h-full object-cover object-top"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    const fallback = member.id === 'dra-reabilitacao'
+                    const fallback = member.id === 'dra-leticia'
                       ? 'https://images.unsplash.com/photo-1594824813581-2a7e7bc8c242?auto=format&fit=crop&w=800&q=80'
-                      : 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80';
+                      : 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80';
                     if (target.src !== fallback) {
                       target.src = fallback;
                     }

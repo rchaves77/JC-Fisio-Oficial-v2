@@ -73,12 +73,19 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onSelectPost }) => {
             >
               <div>
                 {/* Image */}
-                <div className="relative h-44 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                   <img
                     src={post.imageUrl}
                     alt={post.title}
+                    referrerPolicy="no-referrer"
                     className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('photo-1576091160399')) {
+                        target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80';
+                      }
+                    }}
                   />
                   <div className="absolute top-3 left-3">
                     <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0f3e8f] text-[10px] font-black uppercase tracking-wider shadow-xs">

@@ -35,7 +35,14 @@ export const BlogPostModal: React.FC<BlogPostModalProps> = ({
           <img
             src={post.imageUrl}
             alt={post.title}
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover opacity-80"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.src.includes('photo-1576091160399')) {
+                target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80';
+              }
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
           

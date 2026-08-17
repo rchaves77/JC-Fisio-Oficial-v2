@@ -75,7 +75,7 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
   };
 
   return (
-    <div id="inicio" className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 flex flex-col justify-between">
+    <div id="inicio" className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 flex flex-col justify-between pb-20 sm:pb-0">
       
       {/* 1. STICKY NAVBAR */}
       <PublicNavbar
@@ -134,14 +134,41 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
         whatsappUrl={whatsappUrl}
       />
 
-      {/* FLOATING ACTION BUTTONS */}
-      
-      {/* WhatsApp Floating Button */}
+      {/* MOBILE STICKY BOTTOM BAR (Optimized for 80% mobile patients) */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 shadow-2xl flex items-center justify-between gap-2">
+        <a
+          href={`tel:${CLINIC_INFO.landlinePhone.replace(/\D/g, '')}`}
+          className="flex-1 flex flex-col items-center justify-center py-1.5 px-2 rounded-xl bg-slate-100 active:bg-slate-200 text-slate-800 border border-slate-200 text-[11px] font-bold transition-all"
+        >
+          <Phone className="h-4 w-4 text-[#0f3e8f] mb-0.5" />
+          <span>Ligar Fixo</span>
+        </a>
+
+        <button
+          onClick={() => setIsTriageModalOpen(true)}
+          className="flex-1 flex flex-col items-center justify-center py-1.5 px-2 rounded-xl bg-blue-50 active:bg-blue-100 text-[#0f3e8f] border border-blue-200 text-[11px] font-bold transition-all"
+        >
+          <Sparkles className="h-4 w-4 text-[#dc2626] mb-0.5" />
+          <span>Triagem Dor</span>
+        </button>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-[2] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-500 active:bg-emerald-600 text-white font-black text-xs shadow-md shadow-emerald-950/20 transition-all"
+        >
+          <MessageCircle className="h-4 w-4 fill-white" />
+          <span>WhatsApp Direto</span>
+        </a>
+      </div>
+
+      {/* DESKTOP FLOATING WHATSAPP BUTTON */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 px-4 py-3.5 text-xs font-bold text-white shadow-2xl shadow-emerald-950/40 hover:scale-105 transition-all group"
+        className="hidden sm:flex fixed bottom-6 right-6 z-40 items-center gap-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 px-4 py-3.5 text-xs font-bold text-white shadow-2xl shadow-emerald-950/40 hover:scale-105 transition-all group"
         title="Falar no WhatsApp com a equipe da clínica"
       >
         <span className="relative flex h-3 w-3">
@@ -149,18 +176,18 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
           <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
         </span>
         <MessageCircle className="h-5 w-5 fill-white" />
-        <span className="hidden sm:inline font-black">Agendar no WhatsApp</span>
+        <span className="font-black">Agendar no WhatsApp</span>
       </a>
 
       {/* Back to top button */}
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 p-3.5 rounded-full bg-white/95 hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-xl transition-all hover:scale-105 cursor-pointer backdrop-blur-sm"
+          className="fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-40 p-3 rounded-full bg-white/95 hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-xl transition-all hover:scale-105 cursor-pointer backdrop-blur-sm"
           title="Voltar ao início da página"
           aria-label="Voltar ao topo"
         >
-          <ArrowUp className="h-5 w-5 text-[#0f3e8f]" />
+          <ArrowUp className="h-4 w-4 sm:h-5 sm:w-5 text-[#0f3e8f]" />
         </button>
       )}
 

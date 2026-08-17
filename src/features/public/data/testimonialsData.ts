@@ -32,7 +32,7 @@ export const INITIAL_TESTIMONIALS: Testimonial[] = [
     serviceCategory: 'Joelho',
     rating: 5,
     date: 'Julho de 2026',
-    text: 'Não conseguia mais descer a escada da minha casa sem chorar de dor no joelho. A Dra. Camila e a equipe da JC Fisioterapia fizeram um trabalho impecável de fortalecimento e tração. O inchaço sumiu e hoje faço minhas caminhadas matinais sem remédios!',
+    text: 'Não conseguia mais descer a escada da minha casa sem chorar de dor no joelho. A Dra. Leticia e a equipe da JC Fisioterapia fizeram um trabalho impecável de fortalecimento e tração. O inchaço sumiu e hoje faço minhas caminhadas matinais sem remédios!',
     verifiedPatient: true,
     avatarInitial: 'M',
   },

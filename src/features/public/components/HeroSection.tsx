@@ -139,13 +139,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="space-y-2.5">
                 <button
                   onClick={() => onSelectServiceSlug('protusao-discal-degeneracao')}
-                  className="w-full text-left p-3 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-[#dc2626] shrink-0" />
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#dc2626] shrink-0" />
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-[#0f3e8f]">Dor na Coluna, Lombalgia ou Hérnia de Disco</div>
-                      <div className="text-[10px] text-slate-500">Com ou sem queimação que irradia para a perna (ciático)</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0f3e8f]">Dor na Coluna, Lombalgia ou Hérnia</div>
+                      <div className="text-xs text-slate-600">Queimação, travamento ou dor que irradia (ciático)</div>
                     </div>
                   </div>
                   <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-[#0f3e8f] group-hover:translate-x-0.5 transition-all" />
@@ -153,13 +153,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 <button
                   onClick={() => onSelectServiceSlug('gonartrose-joelho')}
-                  className="w-full text-left p-3 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-[#0f3e8f] shrink-0" />
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#0f3e8f] shrink-0" />
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-[#0f3e8f]">Gonartrose, Menisco ou Dor no Joelho</div>
-                      <div className="text-[10px] text-slate-500">Estalos, dor ao descer escadas ou inchaço</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0f3e8f]">Gonartrose, Joelho ou Menisco</div>
+                      <div className="text-xs text-slate-600">Estalos, dor ao descer escadas ou inchaço</div>
                     </div>
                   </div>
                   <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-[#0f3e8f] group-hover:translate-x-0.5 transition-all" />
@@ -167,13 +167,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 <button
                   onClick={() => onSelectServiceSlug('fascite-plantar-calcanhar')}
-                  className="w-full text-left p-3 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-[#dc2626] shrink-0" />
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#dc2626] shrink-0" />
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-[#0f3e8f]">Fascite Plantar ou Esporão de Calcanho</div>
-                      <div className="text-[10px] text-slate-500">Dor aguda e pontadas ao dar os primeiros passos da manhã</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0f3e8f]">Fascite Plantar ou Esporão</div>
+                      <div className="text-xs text-slate-600">Pontadas e queimação nos primeiros passos da manhã</div>
                     </div>
                   </div>
                   <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-[#0f3e8f] group-hover:translate-x-0.5 transition-all" />
@@ -181,13 +181,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 <button
                   onClick={() => onSelectServiceSlug('manguito-rotador-ombro')}
-                  className="w-full text-left p-3 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-[#0f3e8f] transition-all flex items-center justify-between group cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-[#0f3e8f] shrink-0" />
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#0f3e8f] shrink-0" />
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-[#0f3e8f]">Dor no Ombro, Manguito Rotador ou Bursite</div>
-                      <div className="text-[10px] text-slate-500">Dificuldade para dormir de lado ou elevar o braço</div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0f3e8f]">Dor no Ombro ou Manguito Rotador</div>
+                      <div className="text-xs text-slate-600">Dificuldade para elevar o braço ou dormir de lado</div>
                     </div>
                   </div>
                   <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-[#0f3e8f] group-hover:translate-x-0.5 transition-all" />

@@ -8,6 +8,7 @@ import {
   Award,
   ChevronUp,
   Heart,
+  Instagram,
 } from 'lucide-react';
 import { ClinicLogo } from '../../../components/common/ClinicLogo';
 import { CLINIC_INFO } from '../data/servicesData';
@@ -38,7 +39,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
               <ClinicLogo variant="header" />
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
               <strong className="text-white">JC Fisioterapia - Jucelino Castro:</strong> Centro especializado em tratamento conservador da coluna, hérnia de disco, ciatalgia, gonartrose e reabilitação ortopédica no Acre.
             </p>
 
@@ -47,8 +48,20 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
               <span>{CLINIC_INFO.founderCrefito}</span>
             </div>
 
-            <div className="text-[11px] text-slate-400">
-              Mais de <strong className="text-white">43.000 pacientes atendidos</strong> e 15 anos de excelência médica.
+            <div className="flex items-center gap-2 pt-1">
+              <a
+                href={CLINIC_INFO.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-pink-950/60 border border-pink-700/50 text-pink-300 hover:text-white hover:bg-pink-900/80 transition-all text-xs font-bold"
+              >
+                <Instagram className="h-4 w-4 text-pink-400" />
+                <span>{CLINIC_INFO.instagramHandle}</span>
+              </a>
+            </div>
+
+            <div className="text-xs text-slate-400">
+              Mais de <strong className="text-white font-bold">43.000 pacientes atendidos</strong> e 15 anos de excelência médica.
             </div>
           </div>
 
@@ -144,37 +157,46 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
               Atendimento em Rio Branco
             </h4>
 
-            <div className="space-y-2 text-xs text-slate-300">
+            <div className="space-y-2.5 text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 text-[#dc2626]" />
-                <span>{CLINIC_INFO.landlinePhone}</span>
+                <span className="font-semibold">{CLINIC_INFO.landlinePhone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <MessageCircle className="h-3.5 w-3.5 text-emerald-400" />
-                <span>{CLINIC_INFO.whatsappPhone}</span>
+                <span className="font-semibold">{CLINIC_INFO.whatsappPhone}</span>
               </div>
               <div className="flex items-start gap-2">
-                <MapPin className="h-3.5 w-3.5 text-slate-400 shrink-0 mt-0.5" />
+                <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 mt-0.5" />
                 <span>{CLINIC_INFO.address}</span>
               </div>
               <div className="flex items-start gap-2">
-                <Clock className="h-3.5 w-3.5 text-slate-400 shrink-0 mt-0.5" />
-                <div>
-                  <div>{CLINIC_INFO.hoursWeekday}</div>
-                  <div className="text-[10px] text-slate-500">{CLINIC_INFO.hoursSaturday}</div>
+                <Clock className="h-3.5 w-3.5 text-blue-400 shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <div className="font-semibold">{CLINIC_INFO.hoursWeekday}</div>
+                  <div className="text-slate-400">{CLINIC_INFO.hoursSaturday}</div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap gap-2">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0f3e8f] hover:bg-[#0c2f6d] text-white text-xs font-bold transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0f3e8f] hover:bg-[#0c2f6d] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
               >
                 <MessageCircle className="h-3.5 w-3.5 fill-white" />
-                <span>Falar no WhatsApp</span>
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href={CLINIC_INFO.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700 cursor-pointer"
+              >
+                <MapPin className="h-3.5 w-3.5 text-red-400" />
+                <span>Ver Mapa</span>
               </a>
             </div>
           </div>
