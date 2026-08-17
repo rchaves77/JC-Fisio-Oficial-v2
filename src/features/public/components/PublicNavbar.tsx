@@ -184,17 +184,24 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-100 space-y-2">
-              <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold px-2">
-                <Clock className="h-4 w-4 text-[#0f3e8f]" />
-                <span>{CLINIC_INFO.hoursWeekday}</span>
+            <div className="pt-3 border-t border-slate-100 space-y-2.5">
+              <div className="flex items-start gap-2.5 text-xs text-slate-700 font-semibold px-2">
+                <Clock className="h-4 w-4 text-[#0f3e8f] shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <div className="text-slate-900 font-bold">{CLINIC_INFO.hoursWeekday}</div>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-slate-600 font-medium">
+                    <span className="text-slate-800 font-semibold">{CLINIC_INFO.hoursSaturday}</span>
+                    <span className="text-slate-400">•</span>
+                    <span className="text-slate-500">{CLINIC_INFO.hoursSunday}</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold px-2">
-                <MapPin className="h-4 w-4 text-[#dc2626]" />
-                <span>{CLINIC_INFO.address}</span>
+              <div className="flex items-start gap-2.5 text-xs text-slate-700 font-semibold px-2">
+                <MapPin className="h-4 w-4 text-[#dc2626] shrink-0 mt-0.5" />
+                <span className="leading-snug">{CLINIC_INFO.address}</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-pink-700 font-semibold px-2">
-                <Instagram className="h-4 w-4 text-pink-600" />
+              <div className="flex items-center gap-2.5 text-xs text-pink-700 font-semibold px-2">
+                <Instagram className="h-4 w-4 text-pink-600 shrink-0" />
                 <a href={CLINIC_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
                   {CLINIC_INFO.instagramHandle}
                 </a>
