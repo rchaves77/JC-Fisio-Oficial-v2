@@ -157,7 +157,7 @@ export const InsuranceAndContactSection: React.FC<InsuranceAndContactSectionProp
                         </div>
                       </div>
                       <div className="bg-white p-3 rounded-xl border border-slate-200">
-                        <span className="font-bold text-slate-900 block text-xs">Sábado & Domingo:</span>
+                        <span className="font-bold text-slate-900 block text-xs">Sábado</span>
                         <div className="mt-1 space-y-0.5">
                           <div className="text-slate-800 font-bold">🌅 Sábado: 07:30 – 11:00</div>
                           <div className="text-slate-400">🚫 Domingo: Fechado</div>
