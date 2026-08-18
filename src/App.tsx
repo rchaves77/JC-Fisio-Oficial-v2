@@ -221,21 +221,13 @@ export default function App() {
       setCurrentUser(fallbackUser);
     }
 
-    if (role === 'patient') {
-      setActiveTab('online-booking');
-    } else {
-      setActiveTab('dashboard');
-    }
+    setActiveTab('dashboard');
   };
 
   const handleSwitchUser = (user: User) => {
     setCurrentUser(user);
     setIsLocked(false);
-    if (user.role === 'patient') {
-      setActiveTab('online-booking');
-    } else {
-      setActiveTab('dashboard');
-    }
+    setActiveTab('dashboard');
   };
 
   const handleOpenZoomImage = (
@@ -278,6 +270,10 @@ export default function App() {
         {/* Public Presentation Landing Page */}
         <PublicLandingPage
           onOpenLogin={() => setIsLoginModalOpen(true)}
+          onOpenValidationModal={() => {
+            setValidationInitialCode('');
+            setIsValidationModalOpen(true);
+          }}
         />
 
         {/* Login Modal for Staff & Team Access */}
@@ -621,7 +617,7 @@ export default function App() {
       />
 
       {/* Mobile Floating Action Button for Quick Patient Scheduling */}
-      {!isLocked && currentUser.role !== 'patient' && (
+      {!isLocked && (
         <button
           onClick={() => {
             setActiveTab('agenda');
