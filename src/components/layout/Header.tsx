@@ -1,16 +1,25 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
-import { UserRole, User } from '../../types';
-import { Bell, Search, MessageSquare, Lock, UserCog, CheckCheck, Clock, ShieldCheck, X, Menu, Globe } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { UserRole, User, ClinicNotification } from '../../types';
+import {
+  Bell,
+  Search,
+  MessageSquare,
+  Lock,
+  UserCog,
+  CheckCheck,
+  Clock,
+  ShieldCheck,
+  X,
+  Menu,
+  Globe,
+  UserCheck,
+  ListTodo,
+  AlertTriangle,
+  Trash2,
+  Calendar,
+  Sparkles,
+} from 'lucide-react';
 import { ClinicLogo } from '../common/ClinicLogo';
-
-interface NotificationItem {
-  id: string;
-  title: string;
-  message: string;
-  time: string;
-  read: boolean;
-  type: 'appointment' | 'system' | 'patient';
-}
 
 interface HeaderProps {
   currentUser: User;
@@ -24,6 +33,14 @@ interface HeaderProps {
   onLogout?: () => void;
   isSidebarOpen?: boolean;
   onToggleSidebar?: () => void;
+  pendingConfirmationsCount?: number;
+  onOpenPatientConfirmation?: () => void;
+  notifications?: ClinicNotification[];
+  onMarkAllNotificationsRead?: () => void;
+  onToggleNotificationRead?: (id: string) => void;
+  onDeleteNotification?: (id: string) => void;
+  onClearNotifications?: () => void;
+  onSelectNotification?: (notif: ClinicNotification) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -38,30 +55,23 @@ export const Header: React.FC<HeaderProps> = ({
   onLogout,
   isSidebarOpen = false,
   onToggleSidebar,
+  pendingConfirmationsCount = 0,
+  onOpenPatientConfirmation,
+  notifications = [],
+  onMarkAllNotificationsRead,
+  onToggleNotificationRead,
+  onDeleteNotification,
+  onClearNotifications,
+  onSelectNotification,
 }) => {
-  const [notifications, setNotifications] = useState<NotificationItem[]>([
-    {
-      id: 'n1',
-      title: 'Quiropraxia Sala 01 Ativa',
-      message: 'Regra de limite de 1 paciente por horário para o Dr. Jucelino Castro em execução.',
-      time: 'Hoje, 09:00',
-      read: false,
-      type: 'system',
-    },
-    {
-      id: 'n2',
-      title: 'Agenda do Dia Atualizada',
-      message: 'Sessões de Quiropraxia e Fisioterapia organizadas na recepção.',
-      time: 'Hoje, 08:30',
-      read: false,
-      type: 'appointment',
-    },
-  ]);
-
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
 
-  const unreadCount = notifications.filter((n) => !n.read).length;
+  const userNotifications = notifications.filter(
+    (n) => !n.targetUserId || n.targetUserId === 'all' || n.targetUserId === currentUser.id
+  );
+
+  const unreadCount = userNotifications.filter((n) => !n.read).length;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -72,20 +82,6 @@ export const Header: React.FC<HeaderProps> = ({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const handleMarkAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
-  };
-
-  const handleToggleRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: !n.read } : n))
-    );
-  };
-
-  const handleClearAll = () => {
-    setNotifications([]);
-  };
 
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-slate-800 bg-slate-900/95 px-3 md:px-6 backdrop-blur-md">
@@ -113,6 +109,30 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">
+        {/* Quick Patient Confirmation Button with Dynamic Red Badge - Only for Admin & Secretary */}
+        {onOpenPatientConfirmation && (currentUser.role === 'admin' || currentUser.role === 'secretary') && (
+          <button
+            id="btn-confirm-patients"
+            onClick={onOpenPatientConfirmation}
+            className={`relative flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-all cursor-pointer shadow-sm ${
+              pendingConfirmationsCount > 0
+                ? 'border-red-500/60 bg-red-500/10 text-red-300 hover:bg-red-500/20 hover:border-red-400 ring-1 ring-red-500/30'
+                : 'border-slate-800 bg-slate-800/80 text-emerald-400 hover:bg-slate-800'
+            }`}
+            title="Confirmar Presença dos Pacientes de Hoje (Acesso Recepção & ADM)"
+          >
+            <UserCheck className="h-4 w-4" />
+            <span className="hidden sm:inline">Confirmar Pacientes</span>
+            {pendingConfirmationsCount > 0 ? (
+              <span className="flex h-5 min-w-5 px-1.5 items-center justify-center rounded-full bg-red-500 text-[11px] font-black text-white animate-pulse shadow-sm shadow-red-950/60">
+                {pendingConfirmationsCount}
+              </span>
+            ) : (
+              <span className="hidden md:inline-flex h-2 w-2 rounded-full bg-emerald-400" title="Todos confirmados" />
+            )}
+          </button>
+        )}
+
         <button
           onClick={onOpenNewAppointment}
           className="flex items-center gap-1 rounded-full bg-emerald-500 px-3 py-1.5 text-xs font-bold text-slate-950 shadow-sm hover:bg-emerald-400 transition-colors cursor-pointer"
@@ -136,16 +156,17 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </button>
 
+        {/* Notifications Dropdown */}
         <div className="relative" ref={notifRef}>
           <button
             id="btn-notifications"
             onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
             className="relative rounded-full border border-slate-800 bg-slate-800/80 p-2 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
-            title="Notificações do Sistema"
+            title="Notificações Reais do Sistema"
           >
             <Bell className="h-4 w-4" />
             {unreadCount > 0 && (
-              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="absolute right-1.5 top-1.5 h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse ring-2 ring-slate-900"></span>
             )}
           </button>
 
@@ -155,61 +176,72 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="flex items-center gap-2">
                   <Bell className="h-4 w-4 text-emerald-400" />
                   <h3 className="font-bold text-xs text-slate-100">
-                    Notificações {unreadCount > 0 ? `(${unreadCount})` : ''}
+                    Notificações Reais {unreadCount > 0 ? `(${unreadCount})` : ''}
                   </h3>
                 </div>
 
                 <div className="flex items-center gap-2 text-[11px]">
-                  {unreadCount > 0 && (
+                  {unreadCount > 0 && onMarkAllNotificationsRead && (
                     <button
-                      onClick={handleMarkAllAsRead}
+                      onClick={onMarkAllNotificationsRead}
                       className="text-emerald-400 hover:underline flex items-center gap-1 font-semibold cursor-pointer"
                     >
                       <CheckCheck className="h-3.5 w-3.5" /> Lidas
                     </button>
                   )}
-                  {notifications.length > 0 && (
+                  {userNotifications.length > 0 && onClearNotifications && (
                     <button
-                      onClick={handleClearAll}
-                      className="text-slate-400 hover:text-slate-200"
+                      onClick={onClearNotifications}
+                      className="text-slate-400 hover:text-slate-200 cursor-pointer"
                     >
                       Limpar
                     </button>
                   )}
                   <button
                     onClick={() => setIsNotificationsOpen(false)}
-                    className="text-slate-400 hover:text-slate-200 p-0.5"
+                    className="text-slate-400 hover:text-slate-200 p-0.5 cursor-pointer"
                   >
                     <X className="h-4 w-4" />
                   </button>
                 </div>
               </div>
 
-              <div className="max-h-80 overflow-y-auto space-y-2 pr-1">
-                {notifications.length === 0 ? (
+              <div className="max-h-80 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+                {userNotifications.length === 0 ? (
                   <div className="p-6 text-center text-xs text-slate-400 border border-dashed border-slate-800 rounded-xl bg-slate-950/40">
-                    Nenhuma notificação no momento.
+                    <Sparkles className="h-5 w-5 text-slate-500 mx-auto mb-1.5" />
+                    Nenhuma notificação pendente no momento.
                   </div>
                 ) : (
-                  notifications.map((notif) => (
+                  userNotifications.map((notif) => (
                     <div
                       key={notif.id}
-                      onClick={() => handleToggleRead(notif.id)}
+                      onClick={() => {
+                        if (onToggleNotificationRead) onToggleNotificationRead(notif.id);
+                        if (onSelectNotification) onSelectNotification(notif);
+                      }}
                       className={`p-3 rounded-xl border transition-all cursor-pointer ${
                         !notif.read
-                          ? 'border-emerald-500/40 bg-emerald-950/20 text-slate-100'
+                          ? 'border-emerald-500/40 bg-emerald-950/20 text-slate-100 shadow-sm'
                           : 'border-slate-800/80 bg-slate-950/40 text-slate-300 opacity-75 hover:opacity-100'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <h4 className="font-bold text-xs text-slate-100 flex items-center gap-1.5">
+                          {notif.type === 'task' ? (
+                            <ListTodo className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                          ) : notif.type === 'appointment' ? (
+                            <Calendar className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                          ) : (
+                            <UserCheck className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                          )}
                           {!notif.read && (
                             <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
                           )}
-                          {notif.title}
+                          <span>{notif.title}</span>
                         </h4>
                         <span className="text-[10px] text-slate-400 shrink-0 flex items-center gap-1">
-                          <Clock className="h-3 w-3" /> {notif.time}
+                          <Clock className="h-3 w-3" /> {notif.timestamp}
                         </span>
                       </div>
                       <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
@@ -243,23 +275,26 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </button>
 
-          <select
-            id="role-switcher-select"
-            value={currentUser.role}
-            onChange={(e) => onRoleChange(e.target.value as UserRole)}
-            className="hidden xl:block bg-slate-800 border border-slate-700 text-[10px] font-bold text-emerald-400 rounded-md px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
-          >
-            <option value="admin" className="bg-slate-900 text-slate-200">Administrador (Rômulo)</option>
-            <option value="physio" className="bg-slate-900 text-slate-200">Fisioterapeuta</option>
-            <option value="secretary" className="bg-slate-900 text-slate-200">Secretária (Katiuscia)</option>
-            <option value="patient" className="bg-slate-900 text-slate-200">Portal do Paciente</option>
-          </select>
+          {/* Role switcher strictly for Administrator (Rômulo) */}
+          {currentUser.role === 'admin' && (
+            <select
+              id="role-switcher-select"
+              value={currentUser.role}
+              onChange={(e) => onRoleChange(e.target.value as UserRole)}
+              className="hidden xl:block bg-slate-800 border border-slate-700 text-[10px] font-bold text-emerald-400 rounded-md px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+              title="Alternar Papel de Acesso (Exclusivo Administrador)"
+            >
+              <option value="admin" className="bg-slate-900 text-slate-200">Administrador (Rômulo)</option>
+              <option value="physio" className="bg-slate-900 text-slate-200">Fisioterapeuta</option>
+              <option value="secretary" className="bg-slate-900 text-slate-200">Secretária (Katiuscia)</option>
+            </select>
+          )}
 
           {onLogout && (
             <div className="flex items-center gap-1">
               <button
                 onClick={onLogout}
-                className="rounded-xl border border-teal-500/30 bg-teal-950/40 px-2.5 py-1.5 text-teal-300 hover:bg-teal-900/60 transition-all flex items-center gap-1.5 text-xs font-semibold"
+                className="rounded-xl border border-teal-500/30 bg-teal-950/40 px-2.5 py-1.5 text-teal-300 hover:bg-teal-900/60 transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
                 title="Voltar para o Site Público"
               >
                 <Globe className="h-3.5 w-3.5 text-teal-400" />
@@ -268,7 +303,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={onLogout}
-                className="rounded-xl border border-slate-800 bg-slate-800 p-2 text-slate-400 hover:bg-rose-500/20 hover:text-rose-400 hover:border-rose-500/30 transition-colors flex items-center gap-1 text-xs"
+                className="rounded-xl border border-slate-800 bg-slate-800 p-2 text-slate-400 hover:bg-rose-500/20 hover:text-rose-400 hover:border-rose-500/30 transition-colors flex items-center gap-1 text-xs cursor-pointer"
                 title="Bloquear / Sair"
               >
                 <Lock className="h-4 w-4" />

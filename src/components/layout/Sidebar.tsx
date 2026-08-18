@@ -19,12 +19,14 @@ import {
   FileCheck,
   Database,
   X,
+  ListTodo,
 } from 'lucide-react';
 
 export type ActiveTab =
   | 'dashboard'
   | 'agenda'
   | 'pacientes'
+  | 'tarefas'
   | 'analytics'
   | 'online-booking'
   | 'chat'
@@ -43,6 +45,7 @@ interface SidebarProps {
   onOpenGoogleReview?: () => void;
   onOpenSupabaseModal?: () => void;
   pendingCount?: number;
+  pendingTasksCount?: number;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -58,6 +61,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onOpenGoogleReview,
   onOpenSupabaseModal,
   pendingCount = 0,
+  pendingTasksCount = 0,
 }) => {
   // Option to hide/show the Validator tool in sidebar as requested
   const [showValidator, setShowValidator] = useState(() => {
@@ -96,6 +100,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       roles: ['admin', 'physio', 'secretary'],
     },
     {
+      id: 'tarefas' as ActiveTab,
+      label: 'Tarefas & Lembretes',
+      icon: ListTodo,
+      roles: ['admin', 'physio', 'secretary'],
+      badge: pendingTasksCount > 0 ? `${pendingTasksCount}` : undefined,
+    },
+    {
       id: 'equipe' as ActiveTab,
       label: 'Gestão de Equipe & Perfis',
       icon: ShieldCheck,
@@ -117,7 +128,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       id: 'online-booking' as ActiveTab,
       label: 'Agendamento Online',
       icon: Globe,
-      roles: ['admin', 'secretary', 'patient'],
+      roles: ['admin', 'physio', 'secretary'],
       highlight: true,
     },
   ];

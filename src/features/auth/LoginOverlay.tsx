@@ -379,7 +379,6 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
                     >
                       <option value="physio">Fisioterapeuta</option>
                       <option value="secretary">Recepção / Secretária</option>
-                      <option value="patient">Paciente (Portal)</option>
                       <option value="admin">Administrador (ADM)</option>
                     </select>
                   </div>

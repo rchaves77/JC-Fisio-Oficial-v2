@@ -30,10 +30,12 @@ import { getStoredTestimonials, Testimonial } from './data/testimonialsData';
 interface PublicLandingPageProps {
   onOpenLogin: () => void;
   onOpenBookingModal?: () => void;
+  onOpenValidationModal?: () => void;
 }
 
 export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
   onOpenLogin,
+  onOpenValidationModal,
 }) => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -81,6 +83,7 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
       <PublicNavbar
         onOpenLogin={onOpenLogin}
         whatsappUrl={whatsappUrl}
+        onOpenValidationModal={onOpenValidationModal}
       />
 
       {/* 2. HERO SECTION */}
@@ -132,6 +135,7 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
       <PublicFooter
         onOpenLogin={onOpenLogin}
         whatsappUrl={whatsappUrl}
+        onOpenValidationModal={onOpenValidationModal}
       />
 
       {/* MOBILE STICKY BOTTOM BAR (Optimized for 80% mobile patients) */}

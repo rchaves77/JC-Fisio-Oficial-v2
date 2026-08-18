@@ -11,6 +11,8 @@ import { useUserState } from './features/equipe/hooks/useUserState';
 import { useEvolutionTemplates } from './features/templates/hooks/useEvolutionTemplates';
 import { useAuditState } from './features/audit/hooks/useAuditState';
 import { useCertificateState } from './features/certificates/hooks/useCertificateState';
+import { useNotificationState } from './features/notifications/hooks/useNotificationState';
+import { useTasksState } from './features/tarefas/hooks/useTasksState';
 
 // Features
 import { AdminDashboard } from './features/dashboards/AdminDashboard';
@@ -22,6 +24,7 @@ import { PatientPortal } from './features/pacientes/PatientPortal';
 import { OnlineBooking } from './features/agendamento-online/OnlineBooking';
 import { AnalyticsDashboard } from './features/analytics/AnalyticsDashboard';
 import { TeamManagementDashboard } from './features/equipe/TeamManagementDashboard';
+import { TasksManagementDashboard } from './features/tarefas/TasksManagementDashboard';
 import { LoginOverlay } from './features/auth/LoginOverlay';
 import { GoogleReviewModal } from './components/common/GoogleReviewModal';
 import { WhatsAppDispatchModal } from './components/common/WhatsAppDispatchModal';
@@ -32,6 +35,7 @@ import { ValidationPageModal } from './features/certificates/components/Validati
 import { UserProfileModal } from './features/equipe/components/UserProfileModal';
 import { SupabaseConfigModal } from './components/common/SupabaseConfigModal';
 import { PublicLandingPage } from './features/public/PublicLandingPage';
+import { QuickPatientConfirmationModal } from './features/agenda/components/QuickPatientConfirmationModal';
 
 export default function App() {
   const {
@@ -50,6 +54,35 @@ export default function App() {
   const { logs, addAuditLog, clearAuditLogs } = useAuditState();
   const { certificates, generateCertificate, getCertificateById } = useCertificateState();
 
+  // Real Notifications State
+  const {
+    notifications,
+    addNotification,
+    toggleRead,
+    markAllAsRead,
+    deleteNotification,
+    clearNotifications,
+  } = useNotificationState();
+
+  // Real Tasks System for Secretary & Staff
+  const {
+    tasks,
+    addTask,
+    updateTask,
+    deleteTask,
+    toggleTaskStatus,
+  } = useTasksState({
+    onTaskCreatedNotification: (title, message, targetUserId) => {
+      addNotification({
+        title,
+        message,
+        type: 'task',
+        targetUserId,
+        linkTab: 'tarefas',
+      });
+    },
+  });
+
   // Find Rômulo Chaves (admin) as default user, or first active user
   const initialUser = users.find((u) => u.name.includes('Rômulo')) || activeUsers[0] || users[0];
   const [currentUser, setCurrentUser] = useState<User>(initialUser);
@@ -63,6 +96,7 @@ export default function App() {
   const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isSupabaseModalOpen, setIsSupabaseModalOpen] = useState(false);
+  const [isPatientConfirmationOpen, setIsPatientConfirmationOpen] = useState(false);
   const [selectedWhatsAppPatient, setSelectedWhatsAppPatient] = useState<Patient | null>(null);
 
   // Certificate Modals State
@@ -93,6 +127,12 @@ export default function App() {
   } = usePatientState();
 
   const { appointments, handleCreateOrUpdate } = useAgendaState();
+
+  // Pending Confirmations for Today
+  const todayStr = new Date().toISOString().split('T')[0];
+  const pendingConfirmationsCount = appointments.filter(
+    (a) => a.date === todayStr && a.status !== 'confirmed' && a.status !== 'completed'
+  ).length;
 
   // Handler for generating Attendance Certificate for an appointment
   const handleGenerateCertificateForAppointment = (app: Appointment) => {
@@ -133,7 +173,15 @@ export default function App() {
       physioName: app.physioName,
     });
 
-    // 3. Generate Certificate of Attendance (Declaração de Comparecimento) with QR Code
+    // 3. Real notification
+    addNotification({
+      title: 'Presença Confirmada',
+      message: `Paciente ${app.patientName} confirmado hoje às ${app.timeSlot} (${app.physioName}).`,
+      type: 'confirmation',
+      linkTab: 'agenda',
+    });
+
+    // 4. Generate Certificate of Attendance (Declaração de Comparecimento) with QR Code
     handleGenerateCertificateForAppointment(app);
   };
 
@@ -282,6 +330,18 @@ export default function App() {
           unreadChatCount={0}
           isSidebarOpen={isSidebarOpen}
           onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
+          pendingConfirmationsCount={pendingConfirmationsCount}
+          onOpenPatientConfirmation={() => setIsPatientConfirmationOpen(true)}
+          notifications={notifications}
+          onMarkAllNotificationsRead={() => markAllAsRead(currentUser.id)}
+          onToggleNotificationRead={toggleRead}
+          onDeleteNotification={deleteNotification}
+          onClearNotifications={clearNotifications}
+          onSelectNotification={(notif) => {
+            if (notif.linkTab) {
+              setActiveTab(notif.linkTab as ActiveTab);
+            }
+          }}
         />
 
       <div className="flex flex-1">
@@ -309,6 +369,7 @@ export default function App() {
           onOpenGoogleReview={() => setIsGoogleReviewOpen(true)}
           onOpenSupabaseModal={() => setIsSupabaseModalOpen(true)}
           pendingCount={pendingUsers.length}
+          pendingTasksCount={tasks.filter((t) => t.status === 'pendente' && (t.assignedToUserId === 'all' || t.assignedToUserId === currentUser.id)).length}
         />
 
         {/* Main Content Area */}
@@ -359,6 +420,7 @@ export default function App() {
                   appointments={appointments}
                   onNavigateToAgenda={() => setActiveTab('agenda')}
                   onNavigateToPatients={() => setActiveTab('pacientes')}
+                  onNavigateToTasks={() => setActiveTab('tarefas')}
                   onOpenNewAppointment={() => {
                     setActiveTab('agenda');
                     setOpenAppointmentModal(true);
@@ -373,6 +435,19 @@ export default function App() {
                   }}
                   onConfirmAttendance={handleConfirmAttendance}
                   userName={currentUser.name}
+                />
+              )}
+
+              {activeTab === 'tarefas' && (
+                <TasksManagementDashboard
+                  tasks={tasks}
+                  currentUser={currentUser}
+                  users={users}
+                  patients={allPatients}
+                  onAddTask={addTask}
+                  onUpdateTask={updateTask}
+                  onDeleteTask={deleteTask}
+                  onToggleTaskStatus={toggleTaskStatus}
                 />
               )}
 
@@ -521,6 +596,18 @@ export default function App() {
         onOpenValidation={(code) => {
           setValidationInitialCode(code);
           setIsValidationModalOpen(true);
+        }}
+      />
+
+      {/* Quick Patient Confirmation Modal from Header */}
+      <QuickPatientConfirmationModal
+        isOpen={isPatientConfirmationOpen}
+        onClose={() => setIsPatientConfirmationOpen(false)}
+        appointments={appointments}
+        onConfirmAttendance={handleConfirmAttendance}
+        onNavigateToAgenda={() => {
+          setIsPatientConfirmationOpen(false);
+          setActiveTab('agenda');
         }}
       />
 

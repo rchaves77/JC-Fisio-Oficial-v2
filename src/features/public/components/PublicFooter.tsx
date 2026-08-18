@@ -9,6 +9,7 @@ import {
   ChevronUp,
   Heart,
   Instagram,
+  FileCheck,
 } from 'lucide-react';
 import { ClinicLogo } from '../../../components/common/ClinicLogo';
 import { CLINIC_INFO } from '../data/servicesData';
@@ -16,11 +17,13 @@ import { CLINIC_INFO } from '../data/servicesData';
 interface PublicFooterProps {
   onOpenLogin: () => void;
   whatsappUrl: string;
+  onOpenValidationModal?: () => void;
 }
 
 export const PublicFooter: React.FC<PublicFooterProps> = ({
   onOpenLogin,
   whatsappUrl,
+  onOpenValidationModal,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -140,6 +143,18 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
                   Depoimentos Reais
                 </a>
               </li>
+              {onOpenValidationModal && (
+                <li>
+                  <button
+                    onClick={onOpenValidationModal}
+                    className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors font-bold flex items-center gap-1.5 cursor-pointer"
+                    title="Verificar validade de atestados e declarações emitidos pela clínica"
+                  >
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    <span>Validar Declaração / QR Code</span>
+                  </button>
+                </li>
+              )}
               <li>
                 <button
                   onClick={onOpenLogin}
@@ -222,6 +237,16 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
+            {onOpenValidationModal && (
+              <button
+                onClick={onOpenValidationModal}
+                className="text-xs text-slate-400 hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5 cursor-pointer font-medium"
+                title="Validar Declaração de comparecimento"
+              >
+                <FileCheck className="h-3.5 w-3.5 text-emerald-500" />
+                <span>Validador de Declaração</span>
+              </button>
+            )}
             <button
               onClick={scrollToTop}
               className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer flex items-center gap-1.5 px-3 py-1.5"

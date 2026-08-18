@@ -7,6 +7,7 @@ interface SecretaryDashboardProps {
   appointments: Appointment[];
   onNavigateToAgenda: () => void;
   onNavigateToPatients: () => void;
+  onNavigateToTasks?: () => void;
   onOpenNewAppointment: () => void;
   onOpenNewPatient: () => void;
   onConfirmAttendance?: (app: Appointment) => void;
@@ -18,6 +19,7 @@ export const SecretaryDashboard: React.FC<SecretaryDashboardProps> = ({
   appointments,
   onNavigateToAgenda,
   onNavigateToPatients,
+  onNavigateToTasks,
   onOpenNewAppointment,
   onOpenNewPatient,
   onConfirmAttendance,
@@ -39,16 +41,24 @@ export const SecretaryDashboard: React.FC<SecretaryDashboardProps> = ({
             Ao confirmar a presença de um paciente, o sistema gera automaticamente um rascunho de evolução no prontuário.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
+          {onNavigateToTasks && (
+            <button
+              onClick={onNavigateToTasks}
+              className="flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2 text-xs font-bold text-amber-300 hover:bg-amber-500/20 transition-colors shadow-sm cursor-pointer"
+            >
+              📋 Minhas Tarefas
+            </button>
+          )}
           <button
             onClick={onOpenNewPatient}
-            className="flex items-center gap-1.5 rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-bold text-slate-950 hover:bg-emerald-400 transition-colors shadow-md"
+            className="flex items-center gap-1.5 rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-bold text-slate-950 hover:bg-emerald-400 transition-colors shadow-md cursor-pointer"
           >
             <UserPlus className="h-4 w-4 stroke-[2.5]" /> Cadastrar Paciente
           </button>
           <button
             onClick={onOpenNewAppointment}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-colors"
+            className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-colors cursor-pointer"
           >
             <Calendar className="h-4 w-4 text-slate-400" /> Novo Agendamento
           </button>

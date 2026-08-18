@@ -1,4 +1,4 @@
-export type UserRole = 'admin' | 'physio' | 'secretary' | 'patient';
+export type UserRole = 'admin' | 'physio' | 'secretary';
 export type UserStatus = 'active' | 'pending' | 'rejected';
 
 export interface User {
@@ -153,4 +153,38 @@ export interface ClinicMetrics {
   attendanceRate: number; // Percentage (e.g., 94)
   monthlyAppointments: number;
   topTreatments: { name: string; count: number }[];
+}
+
+export type TaskPriority = 'baixa' | 'media' | 'alta' | 'urgente';
+export type TaskStatus = 'pendente' | 'em_andamento' | 'concluida';
+
+export interface ClinicTask {
+  id: string;
+  title: string;
+  description: string;
+  assignedToUserId: string; // User ID or 'all' or 'secretary' or specific physio ID
+  assignedToUserName: string;
+  assignedByUserId: string;
+  assignedByUserName: string;
+  priority: TaskPriority;
+  status: TaskStatus;
+  dueDate?: string; // YYYY-MM-DD
+  dueTime?: string; // HH:mm
+  patientId?: string;
+  patientName?: string;
+  createdAt: string;
+  completedAt?: string;
+  notifyAssigned: boolean;
+}
+
+export interface ClinicNotification {
+  id: string;
+  title: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+  type: 'task' | 'appointment' | 'confirmation' | 'system' | 'patient';
+  targetUserId?: string; // If targeting specific user or undefined for all
+  linkTab?: string;
+  actionUrl?: string;
 }

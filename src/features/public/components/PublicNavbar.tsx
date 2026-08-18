@@ -12,6 +12,7 @@ import {
   Stethoscope,
   Sparkles,
   Instagram,
+  FileCheck,
 } from 'lucide-react';
 import { ClinicLogo } from '../../../components/common/ClinicLogo';
 import { CLINIC_INFO } from '../data/servicesData';
@@ -19,11 +20,13 @@ import { CLINIC_INFO } from '../data/servicesData';
 interface PublicNavbarProps {
   onOpenLogin: () => void;
   whatsappUrl: string;
+  onOpenValidationModal?: () => void;
 }
 
 export const PublicNavbar: React.FC<PublicNavbarProps> = ({
   onOpenLogin,
   whatsappUrl,
+  onOpenValidationModal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -90,6 +93,17 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
               <span>{CLINIC_INFO.whatsappPhone}</span>
             </a>
             <span className="text-blue-400 hidden sm:inline">•</span>
+            {onOpenValidationModal && (
+              <button
+                onClick={onOpenValidationModal}
+                className="hidden lg:inline-flex items-center gap-1.5 text-emerald-300 hover:text-white transition-colors font-bold cursor-pointer"
+                title="Validar Autenticidade de Declaração / Atestado de Comparecimento"
+              >
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                <span>Validar Declaração</span>
+              </button>
+            )}
+            <span className="text-blue-400 hidden lg:inline">•</span>
             <a
               href={CLINIC_INFO.instagramUrl}
               target="_blank"
@@ -133,6 +147,19 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Certificate / Declaration Validator */}
+            {onOpenValidationModal && (
+              <button
+                onClick={onOpenValidationModal}
+                className="hidden sm:flex items-center gap-1.5 rounded-xl bg-emerald-50/80 hover:bg-emerald-100 text-emerald-800 px-3 py-2.5 text-xs font-bold transition-all border border-emerald-300/60 shadow-2xs cursor-pointer"
+                title="Validar Declaração de Comparecimento com QR Code ou Hash"
+              >
+                <FileCheck className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                <span className="hidden md:inline">Validar Declaração</span>
+                <span className="md:hidden">Validar</span>
+              </button>
+            )}
+
             {/* Team Access */}
             <button
               onClick={onOpenLogin}
@@ -182,6 +209,22 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({
                   <ChevronRight className="h-4 w-4 text-slate-400" />
                 </a>
               ))}
+
+              {onOpenValidationModal && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenValidationModal();
+                  }}
+                  className="w-full flex items-center justify-between p-3 rounded-xl bg-emerald-50 text-emerald-900 text-xs font-bold transition-all border border-emerald-200/80 cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                    Validar Declaração / Atestado
+                  </span>
+                  <ChevronRight className="h-4 w-4 text-emerald-600" />
+                </button>
+              )}
             </div>
 
             <div className="pt-3 border-t border-slate-100 space-y-2.5">
