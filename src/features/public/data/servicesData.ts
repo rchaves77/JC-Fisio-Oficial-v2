@@ -55,7 +55,7 @@ export const CLINIC_INFO = {
   ],
   instagramUrl: 'https://www.instagram.com/jucelinocastrofisioterapia/',
   instagramHandle: '@jucelinocastrofisioterapia',
-  mapsUrl: 'https://maps.google.com/?q=Rua+Quintino+Bocaiuva,+1848+-+Bosque,+Rio+Branco+-+AC,+69900-670',
+  mapsUrl: 'https://maps.app.goo.gl/TmRZvfBndpP6XB3A6',
   googleRating: 5.0,
   googleReviewsCount: '180+',
   mission: 'Proporcionar alívio rápido, diagnóstico biomecânico preciso e reabilitação conservadora sem cirurgias desnecessárias para a comunidade do Acre.',
