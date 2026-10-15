@@ -77,7 +77,7 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
 
   const handleWhatsAppCancel = () => {
     const firstName = appointment.patientName ? appointment.patientName.split(' ')[0] : 'Paciente';
-    const text = `Olá, ${firstName}! Informamos que seu agendamento na JC Fisioterapia de ${appointment.date} às ${appointment.timeSlot} foi DESMARCADO. Entre em contato para reagendar quando desejar!`;
+    const text = `Olá, ${firstName}! Informamos que seu agendamento na Jucelino Castro Fisioterapia de ${appointment.date} às ${appointment.timeSlot} foi DESMARCADO. Entre em contato para reagendar quando desejar!`;
     openWhatsApp({
       phone: appointment.patientPhone || '5561999998888',
       text,
@@ -102,7 +102,7 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
 
   const handleWhatsAppGoogleReview = () => {
     const firstName = appointment.patientName ? appointment.patientName.split(' ')[0] : 'Paciente';
-    const text = `Olá, ${firstName}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`;
+    const text = `Olá, ${firstName}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na Jucelino Castro Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://maps.app.goo.gl/TmRZvfBndpP6XB3A6`;
     openWhatsApp({
       phone: appointment.patientPhone || '',
       text,

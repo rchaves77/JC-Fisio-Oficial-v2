@@ -43,7 +43,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
-              <strong className="text-white">JC Fisioterapia - Jucelino Castro:</strong> Centro especializado em tratamento conservador da coluna, hérnia de disco, ciatalgia, gonartrose e reabilitação ortopédica no Acre.
+              <strong className="text-white">Jucelino Castro Fisioterapia:</strong> Centro especializado em tratamento conservador da coluna, hérnia de disco, ciatalgia, gonartrose e reabilitação ortopédica no Acre.
             </p>
 
             <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">

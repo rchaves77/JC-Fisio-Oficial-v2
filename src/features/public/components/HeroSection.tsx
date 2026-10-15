@@ -57,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Sub-headline / Authority Text */}
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
-              A <strong className="text-[#0f3e8f] font-bold">JC Fisioterapia - Jucelino Castro</strong> conta com mais de <strong className="text-slate-900 font-bold">43 mil pacientes reabilitados</strong> e <strong className="text-slate-900 font-bold">15 anos de experiência clínica</strong>. Tratamos hérnias de disco, ciático, dorsolombalgias, gonartrose de joelho, manguito rotador e fascite plantar com metodologia <strong className="text-[#b91c1c] font-bold">100% conservadora e sem cirurgia</strong>.
+              A <strong className="text-[#0f3e8f] font-bold">Jucelino Castro Fisioterapia</strong> conta com mais de <strong className="text-slate-900 font-bold">43 mil pacientes reabilitados</strong> e <strong className="text-slate-900 font-bold">15 anos de experiência clínica</strong>. Tratamos hérnias de disco, ciático, dorsolombalgias, gonartrose de joelho, manguito rotador e fascite plantar com metodologia <strong className="text-[#b91c1c] font-bold">100% conservadora e sem cirurgia</strong>.
             </p>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">

@@ -45,7 +45,7 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => getStoredTestimonials());
 
   const defaultMessage = encodeURIComponent(
-    'Olá! Estava navegando no site da JC Fisioterapia e gostaria de agendar uma avaliação com o Dr. Jucelino Castro.'
+    'Olá! Estava navegando no site da Jucelino Castro Fisioterapia e gostaria de agendar uma avaliação com o Dr. Jucelino Castro.'
   );
   const whatsappUrl = `https://wa.me/${CLINIC_INFO.whatsappRaw}?text=${defaultMessage}`;
 

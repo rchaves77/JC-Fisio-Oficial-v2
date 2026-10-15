@@ -18,7 +18,7 @@ export const supabase = isSupabaseConfigured
  */
 export const SUPABASE_SQL_SETUP = `
 -- ====================================================================
--- SCRIPT DE CRIAÇÃO E POVOAMENTO - JC FISIOTERAPIA (SUPABASE NUVEM)
+-- SCRIPT DE CRIAÇÃO E POVOAMENTO - JUCELINO CASTRO FISIOTERAPIA (SUPABASE NUVEM)
 -- Cole este script no SQL Editor do seu Supabase (https://supabase.com/dashboard)
 -- e clique em "RUN".
 -- ====================================================================

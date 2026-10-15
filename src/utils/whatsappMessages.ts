@@ -122,7 +122,7 @@ export function formatAppointmentConfirmationMessage({
 
     return (
       `Olá, ${firstName}! ☀️\n\n` +
-      `Passando para *confirmar a sua consulta* na *JC Fisioterapia* para *Segunda-feira (${formattedDate}) às ${timeSlot}* com ${physioName}.\n` +
+      `Passando para *confirmar a sua consulta* na *Jucelino Castro Fisioterapia* para *Segunda-feira (${formattedDate}) às ${timeSlot}* com ${physioName}.\n` +
       `📍 Sala: ${room}${isEncaixe ? ' (Encaixe de Horário)' : ''}.${slotNote}\n\n` +
       `Podemos confirmar a sua presença? Por favor, responda com *SIM* para garantirmos seu horário ou nos avise com antecedência caso precise remarcar. Obrigado!`
     );
@@ -131,7 +131,7 @@ export function formatAppointmentConfirmationMessage({
   // Regular D-1 / Weekday confirmation message
   return (
     `Olá, ${firstName}! 🩺\n\n` +
-    `Passando para *confirmar seu atendimento* na *JC Fisioterapia* para *amanhã, ${weekday} (${formattedDate}) às ${timeSlot}* com ${physioName}.\n` +
+    `Passando para *confirmar seu atendimento* na *Jucelino Castro Fisioterapia* para *amanhã, ${weekday} (${formattedDate}) às ${timeSlot}* com ${physioName}.\n` +
     `📍 Sala: ${room}${isEncaixe ? ' (Encaixe de Horário)' : ''}.\n\n` +
     `Podemos confirmar sua presença? Por favor, responda com *SIM* para garantirmos seu horário ou nos avise caso precise reagendar. Obrigado!`
   );

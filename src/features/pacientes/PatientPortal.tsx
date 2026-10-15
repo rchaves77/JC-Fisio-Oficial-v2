@@ -75,14 +75,14 @@ export const PatientPortal: React.FC<PatientPortalProps> = ({
             <span className="text-xl font-black">★</span>
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-100">Como foi seu atendimento na JC Fisioterapia?</h3>
+            <h3 className="text-sm font-bold text-slate-100">Como foi seu atendimento na Jucelino Castro Fisioterapia?</h3>
             <p className="text-xs text-slate-400 mt-0.5">
               Deixe sua avaliação de 5 estrelas no Google! Sua opinião é fundamental para nossa clínica.
             </p>
           </div>
         </div>
         <a
-          href="https://g.page/r/CSGfSfsvixLtEBM/review"
+          href="https://maps.app.goo.gl/TmRZvfBndpP6XB3A6"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-xl bg-amber-500 px-5 py-2.5 text-xs font-bold text-slate-950 hover:bg-amber-400 transition-colors shadow-md flex items-center gap-1.5 shrink-0"

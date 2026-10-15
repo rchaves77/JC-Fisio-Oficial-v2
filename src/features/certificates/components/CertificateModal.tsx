@@ -92,7 +92,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             <ClinicLogo variant="certificate" className="mb-0.5 max-h-12 print:max-h-11" />
             <div>
               <h1 className="text-lg sm:text-xl font-black text-emerald-400 print:text-emerald-800 tracking-wider uppercase">
-                JC FISIOTERAPIA & REABILITAÇÃO
+                JUCELINO CASTRO FISIOTERAPIA
               </h1>
               <p className="text-xs text-slate-400 print:text-slate-700 font-medium">
                 Clínica de Fisioterapia Ortopédica, Traumatologia & Pilates Clínico

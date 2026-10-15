@@ -44,7 +44,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
           <span className="inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-[10px] font-bold text-emerald-400 border border-emerald-500/30 uppercase tracking-wider mb-1">
             Métricas & Indicadores de Desempenho
           </span>
-          <h1 className="text-xl font-bold">Relatório Analítico da Clínica JC Fisioterapia</h1>
+          <h1 className="text-xl font-bold">Relatório Analítico da Clínica Jucelino Castro Fisioterapia</h1>
           <p className="text-xs text-slate-400 mt-1">Análise estratégica de faturamento, novos pacientes e tratamentos.</p>
         </div>
       </div>

@@ -87,7 +87,7 @@ export const NewTestimonialModal: React.FC<NewTestimonialModalProps> = ({
                 Histórias de Sucesso
               </span>
               <h3 className="text-xl font-black text-slate-900 pt-1">
-                Compartilhe Sua Experiência na JC Fisioterapia
+                Compartilhe Sua Experiência na Jucelino Castro Fisioterapia
               </h3>
               <p className="text-xs text-slate-500">
                 Seu relato ajuda novos pacientes a entenderem a eficácia do tratamento conservador.

@@ -36,6 +36,7 @@ import { UserProfileModal } from './features/equipe/components/UserProfileModal'
 import { SupabaseConfigModal } from './components/common/SupabaseConfigModal';
 import { PublicLandingPage } from './features/public/PublicLandingPage';
 import { QuickPatientConfirmationModal } from './features/agenda/components/QuickPatientConfirmationModal';
+import { SystemUpdateBadge } from './components/common/SystemUpdateBadge';
 
 export default function App() {
   const {
@@ -630,6 +631,9 @@ export default function App() {
           <span className="text-xs">Agendar</span>
         </button>
       )}
+
+      {/* Bottom-left persistent System Update & Author Badge */}
+      <SystemUpdateBadge />
     </div>
   );
 }

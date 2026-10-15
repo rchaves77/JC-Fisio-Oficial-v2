@@ -99,7 +99,7 @@ export const ValidationPageModal: React.FC<ValidationPageModalProps> = ({
         physioCrefito: 'CREFITO-3/184920-F',
         receptionistName: 'Rômulo Chaves',
         issuedAt: new Date('2026-08-17T18:57:35').toISOString(),
-        clinicName: 'JC Fisioterapia & Reabilitação Especializada',
+        clinicName: 'Jucelino Castro Fisioterapia',
         validationUrl: `${typeof window !== 'undefined' ? window.location.origin : ''}?validar=JC-DECL-2026-2345`,
         status: 'valid',
       };
@@ -146,7 +146,7 @@ export const ValidationPageModal: React.FC<ValidationPageModalProps> = ({
               <h2 className="text-base font-bold text-slate-100 flex items-center gap-2">
                 Validador Oficial de Declarações
                 <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
-                  JC FISIOTERAPIA
+                  JUCELINO CASTRO FISIOTERAPIA
                 </span>
               </h2>
               <p className="text-xs text-slate-400">Verifique a autenticidade de comprovantes de comparecimento</p>
@@ -238,7 +238,7 @@ export const ValidationPageModal: React.FC<ValidationPageModalProps> = ({
 
                 {/* Footer Validation Notice */}
                 <div className="text-[11px] text-emerald-300/80 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20 text-center font-medium space-y-1">
-                  <p>✓ As informações acima coincidem rigorosamente com os registros ativos do sistema da JC Fisioterapia & Reabilitação.</p>
+                  <p>✓ As informações acima coincidem rigorosamente com os registros ativos do sistema da Jucelino Castro Fisioterapia.</p>
                   <p className="text-[10px] text-slate-400 font-mono">
                     CNPJ: 24.868.183/0001-20 • Fone: (68) 99244-9425 • R. Quintino Bocaiuva, 1848 - Bosque, Rio Branco - AC, 69900-670
                   </p>

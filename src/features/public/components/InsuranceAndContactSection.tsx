@@ -102,7 +102,7 @@ export const InsuranceAndContactSection: React.FC<InsuranceAndContactSectionProp
                 Canais de Atendimento & Endereço
               </span>
               <h3 className="text-2xl font-black text-slate-900">
-                JC Fisioterapia - Jucelino Castro
+                Jucelino Castro Fisioterapia
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Atendimento pontual com hora marcada no bairro Bosque em Rio Branco.

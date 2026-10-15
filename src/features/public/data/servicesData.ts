@@ -27,7 +27,7 @@ export interface ServiceItem {
 }
 
 export const CLINIC_INFO = {
-  name: 'JC Fisioterapia - Jucelino Castro',
+  name: 'Jucelino Castro Fisioterapia',
   founder: 'Dr. Jucelino Castro',
   founderRole: 'Fisioterapeuta Especialista em Coluna & Quiropraxia',
   founderCrefito: 'CREFITO-11 / Registro Ativo',

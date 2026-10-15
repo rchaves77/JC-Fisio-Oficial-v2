@@ -76,7 +76,7 @@ export const OnlineBooking: React.FC<OnlineBookingProps> = ({ onBookingSuccess }
           <div className="rounded-2xl bg-amber-50 p-4 border border-amber-200 text-left space-y-2">
             <div className="flex items-center gap-2 text-amber-900 font-bold text-xs">
               <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-              <span>Já é nosso paciente? Avalie a JC Fisioterapia no Google!</span>
+              <span>Já é nosso paciente? Avalie a Jucelino Castro Fisioterapia no Google!</span>
             </div>
             <p className="text-[11px] text-amber-800">
               Sua avaliação de 5 estrelas ajuda outros pacientes a encontrarem tratamento de excelência.
@@ -117,9 +117,9 @@ export const OnlineBooking: React.FC<OnlineBookingProps> = ({ onBookingSuccess }
           </div>
           <div>
             <h4 className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
-              Link de Avaliação do Google da JC Fisioterapia
+              Link de Avaliação do Google da Jucelino Castro Fisioterapia
             </h4>
-            <p className="text-[11px] text-slate-300 font-mono">https://g.page/r/CSGfSfsvixLtEBM/review</p>
+            <p className="text-[11px] text-slate-300 font-mono">https://maps.app.goo.gl/TmRZvfBndpP6XB3A6</p>
           </div>
         </div>
         <div className="flex items-center gap-2 w-full sm:w-auto">

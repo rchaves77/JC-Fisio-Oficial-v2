@@ -136,19 +136,19 @@ export const WhatsAppDispatchModal: React.FC<WhatsAppDispatchModalProps> = ({
     if (messageTemplate === 'sabado_segunda') {
       setMessageText(
         `Olá, ${nameToUse}! ☀️\n\n` +
-          `Passando para *confirmar a sua consulta* na *JC Fisioterapia* para *Segunda-feira (${suggestedInfo.formattedTargetDate})* com Dr. Jucelino Castro (Sala 01).\n` +
+          `Passando para *confirmar a sua consulta* na *Jucelino Castro Fisioterapia* para *Segunda-feira (${suggestedInfo.formattedTargetDate})* com Dr. Jucelino Castro (Sala 01).\n` +
           `⏰ *Lembrete importante:* Nossos atendimentos na segunda-feira iniciam pontualmente às 07:30.\n\n` +
           `Podemos confirmar a sua presença? Por favor, responda com *SIM* para garantirmos seu horário ou nos avise com antecedência caso precise remarcar. Obrigado!`
       );
     } else if (messageTemplate === 'lembrete') {
       setMessageText(
         `Olá, ${nameToUse}! 🩺\n\n` +
-          `Passando para *confirmar o seu atendimento* na *JC Fisioterapia* agendado para *${appointmentDate}* com Dr. Jucelino Castro (Sala 01).\n\n` +
+          `Passando para *confirmar o seu atendimento* na *Jucelino Castro Fisioterapia* agendado para *${appointmentDate}* com Dr. Jucelino Castro (Sala 01).\n\n` +
           `Podemos confirmar sua presença? Por favor, responda com *SIM* para garantirmos o seu horário ou nos avise se precisar reagendar. Obrigado!`
       );
     } else if (messageTemplate === 'google_review') {
       setMessageText(
-        `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi seu atendimento e tratamento na JC Fisioterapia.\n\nPoderia avaliar nosso atendimento no Google?\nLink: ${GOOGLE_REVIEW_LINK}`
+        `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi seu atendimento e tratamento na Jucelino Castro Fisioterapia.\n\nPoderia avaliar nosso atendimento no Google?\nLink: ${GOOGLE_REVIEW_LINK}`
       );
     } else if (messageTemplate === 'exercicios') {
       setMessageText(

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { X, User as UserIcon, Lock, KeyRound, Check, Shield, Save, Phone, Mail } from 'lucide-react';
 import { User } from '../../../types';
 import { formatPhone } from '../../../utils/masks';
@@ -271,7 +271,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
                 <Shield className="h-4 w-4 text-emerald-400" />
-                Logo Oficial da JC Fisioterapia
+                Logo Oficial da Jucelino Castro Fisioterapia
               </h3>
               <ClinicLogo variant="header" showSubtitle={false} />
             </div>

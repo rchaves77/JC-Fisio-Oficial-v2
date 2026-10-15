@@ -20,7 +20,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
   const handleOpenWhatsApp = (patient: Patient, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const firstName = patient.name ? patient.name.split(' ')[0] : 'Paciente';
-    const text = `Olá, ${firstName}! Tudo bem? Falo da JC Fisioterapia.`;
+    const text = `Olá, ${firstName}! Tudo bem? Falo da Jucelino Castro Fisioterapia.`;
     openWhatsApp({
       phone: patient.phone,
       text,
@@ -30,7 +30,7 @@ export const PatientTable: React.FC<PatientTableProps> = ({
   const handleSendGoogleReview = (patient: Patient, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const nameToUse = patient.name ? patient.name.split(' ')[0] : 'Paciente';
-    const text = `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na JC Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://g.page/r/CSGfSfsvixLtEBM/review`;
+    const text = `Olá, ${nameToUse}! Tudo bem? Gostaria de saber como foi sua experiência no tratamento na Jucelino Castro Fisioterapia. Poderia avaliar nosso atendimento no Google? Link: https://maps.app.goo.gl/TmRZvfBndpP6XB3A6`;
     openWhatsApp({
       phone: patient.phone,
       text,

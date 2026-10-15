@@ -300,9 +300,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Footer info banner */}
         <div className="p-3 m-2 rounded-2xl bg-slate-950/60 border border-slate-800 text-xs space-y-2">
           <ClinicLogo variant="sidebar" />
-          <div className="text-[10px] text-slate-400 font-medium border-t border-slate-800/80 pt-1.5 flex items-center justify-between">
-            <span>Desenvolvido por <strong className="text-emerald-400 font-bold">Rômulo Chaves</strong></span>
-            <span className="text-slate-500">v2026</span>
+          <div className="text-[10px] text-slate-400 font-medium border-t border-slate-800/80 pt-1.5 space-y-1">
+            <div className="flex items-center justify-between text-slate-400">
+              <span>Última atualização:</span>
+              <span className="text-emerald-400 font-mono font-semibold">15/10/2026 às 15:50</span>
+            </div>
+            <div className="flex items-center justify-between text-slate-400">
+              <span>Feito por:</span>
+              <span className="text-emerald-400 font-bold">Rômulo Chaves - @ClienteBox</span>
+            </div>
+            <div className="pt-0.5 text-[9px] text-slate-500 text-center font-medium">
+              Jucelino Castro Fisioterapia • v2026
+            </div>
           </div>
         </div>
       </aside>

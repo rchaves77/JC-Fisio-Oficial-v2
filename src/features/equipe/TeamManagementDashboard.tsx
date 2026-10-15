@@ -96,7 +96,7 @@ export const TeamManagementDashboard: React.FC<TeamManagementDashboardProps> = (
           </span>
           <h1 className="text-xl sm:text-2xl font-bold">Gestão de Perfil & Membros da Equipe</h1>
           <p className="text-xs text-slate-400 mt-1">
-            Cadastre novos fisioterapeutas, atualize fotos de perfil e altere permissões de acesso da clínica JC Fisioterapia.
+            Cadastre novos fisioterapeutas, atualize fotos de perfil e altere permissões de acesso da clínica Jucelino Castro Fisioterapia.
           </p>
         </div>
         <button

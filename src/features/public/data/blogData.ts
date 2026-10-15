@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
     imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
     content: [
       'Receber o diagnóstico de hérnia de disco (cervical ou lombar) ainda assusta muitas pessoas com a ideia de uma cirurgia arriscada. No entanto, as evidências científicas internacionais comprovam que a cirurgia só é estritamente indicada em menos de 5% dos casos (síndrome da cauda equina ou déficit neurológico progressivo grave).',
-      'Na JC Fisioterapia, o tratamento baseia-se na descompressão biomecânica. O disco intervertebral não "saiu do lugar", mas sim extravasou parte de seu núcleo gelatinoso, comprimindo as raízes nervosas vizinhas e gerando inflamação intensa com dor que desce para a perna (ciático) ou para os braços.',
+      'Na Jucelino Castro Fisioterapia, o tratamento baseia-se na descompressão biomecânica. O disco intervertebral não "saiu do lugar", mas sim extravasou parte de seu núcleo gelatinoso, comprimindo as raízes nervosas vizinhas e gerando inflamação intensa com dor que desce para a perna (ciático) ou para os braços.',
       'Através do tratamento manipulativo lombar, tração articular suave e estabilização muscular profunda (Pilates Clínico), reduzimos a pressão intra-discal mecânica. O próprio organismo inicia a reabsorção natural do fragmento herniado e a cicatrização do anel fibroso.',
       'O repouso absoluto na cama, antes recomendado por médicos antigos, hoje é considerado prejudicial: o repouso atrofia os músculos de sustentação e piora a inflamação. O movimento controlado e direcionado é o verdadeiro remédio para a coluna.',
     ],
@@ -80,7 +80,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       'Você já acordou de manhã, colocou o pé no chão e sentiu uma pontada tão intensa no calcanhar que precisou mancar? Esse é o sintoma clássico da fascite plantar, frequentemente acompanhada de esporão de calcâneo.',
       'Durante a noite, enquanto dormimos com os pés relaxados, a fáscia plantar encurta e tenta cicatrizar. No momento em que você pisa no chão ao despertar, o peso do corpo estica abruptamente essa estrutura inflamada, gerando microlesões e dor aguda.',
-      'Na JC Fisioterapia, combinamos liberação miofascial profunda da panturrilha (que está conectada à sola do pé pelo tendão de Aquiles), mobilização articular do tornozelo e exercícios excêntricos específicos. O resultado é o alívio rápido da dor logo nos primeiros dias de sessão.',
+      'Na Jucelino Castro Fisioterapia, combinamos liberação miofascial profunda da panturrilha (que está conectada à sola do pé pelo tendão de Aquiles), mobilização articular do tornozelo e exercícios excêntricos específicos. O resultado é o alívio rápido da dor logo nos primeiros dias de sessão.',
     ],
     keyTakeaways: [
       'O esporão ósseo não é o vilão principal; a inflamação da fáscia ao redor é quem dói.',

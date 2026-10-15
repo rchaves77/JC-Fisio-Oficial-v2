@@ -142,7 +142,7 @@ export const TasksManagementDashboard: React.FC<TasksManagementDashboardProps> =
   const handleNotifyViaWhatsApp = (task: ClinicTask) => {
     const assignedUser = users.find((u) => u.id === task.assignedToUserId);
     const targetPhone = assignedUser?.phone || '5568992449425';
-    const text = `📋 *LEMBRETE DE TAREFA - JC FISIOTERAPIA*\n\n` +
+    const text = `📋 *LEMBRETE DE TAREFA - JUCELINO CASTRO FISIOTERAPIA*\n\n` +
       `Olá, *${task.assignedToUserName}*!\n\n` +
       `Foi atribuída a você a seguinte tarefa:\n` +
       `📌 *${task.title}*\n` +
@@ -151,7 +151,7 @@ export const TasksManagementDashboard: React.FC<TasksManagementDashboardProps> =
       `🔥 *Prioridade:* ${task.priority.toUpperCase()}\n` +
       `${task.patientName ? `👤 *Paciente relacionado:* ${task.patientName}\n` : ''}` +
       `\nAtribuído por: *${task.assignedByUserName}*\n` +
-      `_Sistema Clínico JC Fisioterapia_`;
+      `_Sistema Clínico Jucelino Castro Fisioterapia_`;
 
     openWhatsApp({ phone: targetPhone, text });
   };

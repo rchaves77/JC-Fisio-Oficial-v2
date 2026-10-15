@@ -441,10 +441,10 @@ export const LoginOverlay: React.FC<LoginOverlayProps> = ({
 
         <div className="text-center pt-2 border-t border-slate-800 space-y-0.5">
           <p className="text-[10px] text-slate-400">
-            JC Fisioterapia • Todos os direitos reservados © 2026
+            Jucelino Castro Fisioterapia • Todos os direitos reservados © 2026
           </p>
           <p className="text-[10px] text-emerald-400 font-semibold">
-            Desenvolvimento do Sistema por Rômulo Chaves (@romulodigital)
+            Desenvolvimento do Sistema por Rômulo Chaves - ClienteBox
           </p>
         </div>
       </div>

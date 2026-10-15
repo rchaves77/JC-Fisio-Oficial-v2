@@ -57,7 +57,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             Visão Geral do Administrador
           </span>
           <h1 className="text-xl sm:text-2xl font-bold text-slate-100">Painel Clínico - {userName}</h1>
-          <p className="text-xs text-slate-400 mt-1">Resumo em tempo real das atividades da clínica JC Fisioterapia.</p>
+          <p className="text-xs text-slate-400 mt-1">Resumo em tempo real das atividades da clínica Jucelino Castro Fisioterapia.</p>
         </div>
         <div className="flex items-center gap-2">
           {onOpenNewPatient && (

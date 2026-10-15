@@ -6,7 +6,7 @@ interface GoogleReviewModalProps {
   onClose: () => void;
 }
 
-export const GOOGLE_REVIEW_LINK = 'https://g.page/r/CSGfSfsvixLtEBM/review';
+export const GOOGLE_REVIEW_LINK = 'https://maps.app.goo.gl/TmRZvfBndpP6XB3A6';
 
 export const GoogleReviewModal: React.FC<GoogleReviewModalProps> = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState(false);
@@ -21,7 +21,7 @@ export const GoogleReviewModal: React.FC<GoogleReviewModalProps> = ({ isOpen, on
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Olá! Tudo bem? Gostaria de saber como foi seu atendimento e tratamento na JC Fisioterapia. 🌟\n\nPoderia avaliar nosso atendimento no Google?\nLink: ${GOOGLE_REVIEW_LINK}`
+    `Olá! Tudo bem? Gostaria de saber como foi seu atendimento e tratamento na Jucelino Castro Fisioterapia. 🌟\n\nPoderia avaliar nosso atendimento no Google?\nLink: ${GOOGLE_REVIEW_LINK}`
   );
   const whatsappUrl = `https://wa.me/?text=${whatsappMessage}`;
 
@@ -50,7 +50,7 @@ export const GoogleReviewModal: React.FC<GoogleReviewModalProps> = ({ isOpen, on
         {/* Content */}
         <div className="space-y-4 text-xs">
           <p className="text-slate-300 leading-relaxed">
-            As avaliações geram confiança e ajudam a <strong>JC Fisioterapia</strong> a se destacar na Pesquisa do Google e no Google Maps!
+            As avaliações geram confiança e ajudam a <strong>Jucelino Castro Fisioterapia</strong> a se destacar na Pesquisa do Google e no Google Maps!
           </p>
 
           {/* Link Box */}
